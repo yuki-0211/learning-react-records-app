@@ -5,7 +5,7 @@ interface Props extends OutlinedTextFieldProps {
   onChange: () => void;
 }
 
-export const InputForm = forwardRef<HTMLInputElement, Props>(
+export const TextFieldOutlined = forwardRef<HTMLInputElement, Props>(
   (props: Props, ref: Ref<HTMLInputElement>) => {
     return (
       <OutlinedInput
