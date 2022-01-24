@@ -4,7 +4,7 @@ interface Props extends ButtonProps {
   onClick: () => void;
 }
 
-export const CharacterButton: React.VFC<Props> = ({
+export const ButtonCharacter: React.VFC<Props> = ({
   color = "primary",
   disabled = false,
   disableElevation = false,
