@@ -2,11 +2,12 @@ import {ThemeProvider} from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 import theme  from "./theme"
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Button, ButtonProps } from '@mui/material'
+import { ButtonProps } from '@mui/material'
+import { ButtonCharacter } from '.';
 
 export default {
-  title: "Example/Button",
-  component: Button,
+  title: "Example/ButtonCharacter",
+  component: ButtonCharacter,
   decorators: [
     (Story) => {
       return (
@@ -17,9 +18,9 @@ export default {
       )
     },
   ],
-} as ComponentMeta<typeof Button>
+} as ComponentMeta<typeof ButtonCharacter>
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof ButtonCharacter> = (args) => <ButtonCharacter {...args} />;
 
 export const Primary = Template.bind({});
 const primaryProps: ButtonProps ={

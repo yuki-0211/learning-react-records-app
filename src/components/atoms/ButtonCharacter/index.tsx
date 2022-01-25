@@ -1,10 +1,6 @@
 import { Button, ButtonProps } from "@mui/material";
 
-interface Props extends ButtonProps {
-  onClick: () => void;
-}
-
-export const ButtonCharacter: React.VFC<Props> = ({
+export const ButtonCharacter: React.VFC<ButtonProps> = ({
   color = "primary",
   disabled = false,
   disableElevation = false,
@@ -28,7 +24,7 @@ export const ButtonCharacter: React.VFC<Props> = ({
       size={size}
       variant={variant}
       sx={sx}
-      onClick={() => onClick()}
+      onClick={() => onClick}
     >
       {children}
     </Button>

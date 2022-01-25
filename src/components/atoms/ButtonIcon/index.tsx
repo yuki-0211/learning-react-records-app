@@ -1,9 +1,6 @@
 import { IconButton,IconButtonProps } from "@mui/material";
 
-interface Props extends IconButtonProps {
-  onClick: () => void;
-}
-export const ButtonIcon: React.VFC<Props> = ({
+export const ButtonIcon: React.VFC<IconButtonProps> = ({
     
   color = "primary",
   disabled = false,
@@ -22,7 +19,7 @@ export const ButtonIcon: React.VFC<Props> = ({
       disableRipple={disableRipple}
       size={size}
       sx={sx}
-      onClick={() => onClick()}
+      onClick={() => onClick}
     >
       {children}
     </IconButton>
