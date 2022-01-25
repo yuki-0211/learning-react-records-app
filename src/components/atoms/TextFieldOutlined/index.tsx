@@ -1,12 +1,8 @@
 import { OutlinedInput, OutlinedTextFieldProps } from "@mui/material";
 import { forwardRef, Ref } from "react";
 
-interface Props extends OutlinedTextFieldProps {
-  onChange: () => void;
-}
-
-export const TextFieldOutlined = forwardRef<HTMLInputElement, Props>(
-  (props: Props, ref: Ref<HTMLInputElement>) => {
+export const TextFieldOutlined = forwardRef<HTMLInputElement, OutlinedTextFieldProps>(
+  (props: OutlinedTextFieldProps, ref: Ref<HTMLInputElement>) => {
     return (
       <OutlinedInput
         label={props.label}

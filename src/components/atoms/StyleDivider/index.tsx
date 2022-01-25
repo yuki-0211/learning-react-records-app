@@ -1,8 +1,6 @@
 import { Divider, DividerProps} from "@mui/material";
 
-interface Props extends DividerProps {
-}
-export const StyleDivider: React.VFC<Props> = ({
+export const StyleDivider: React.VFC<DividerProps> = ({
     orientation,
     sx,
 }) => {

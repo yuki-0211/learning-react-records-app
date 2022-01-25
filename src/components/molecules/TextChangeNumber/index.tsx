@@ -1,11 +1,11 @@
-import { ButtonProps, InputBase } from "@mui/material";
+import { InputBase } from "@mui/material";
 import { Ref } from "react";
 import { ButtonIcon } from "../../atoms/ButtonIcon";
 import { StyleDivider } from "../../atoms/StyleDivider";
 import { StyleIcon } from "../../atoms/StyleIcon";
 import { StylePaper } from "../../atoms/StylePaper";
 
-interface Props extends ButtonProps {
+interface Props {
   onClickIncrease: () => void;
   onClickDecrease: () => void;
   ref: Ref<HTMLInputElement>

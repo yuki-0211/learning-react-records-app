@@ -2,12 +2,8 @@
 import { InputBase, InputBaseProps} from "@mui/material";
 import { forwardRef, Ref } from "react";
 
-interface Props extends InputBaseProps {
-  onChange: () => void;
-}
-
-export const TextInputBase = forwardRef<HTMLInputElement, Props>(
-  (props: Props, ref: Ref<HTMLInputElement>) => {
+export const TextInputBase = forwardRef<HTMLInputElement, InputBaseProps>(
+  (props: InputBaseProps, ref: Ref<HTMLInputElement>) => {
     return (
       <InputBase
         placeholder={props.placeholder}

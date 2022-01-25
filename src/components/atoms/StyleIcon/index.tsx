@@ -1,9 +1,6 @@
 import {Icon, IconProps} from "@mui/material";
 
-interface Props extends IconProps {
-}
-
-export const StyleIcon: React.VFC<Props> = ({
+export const StyleIcon: React.VFC<IconProps> = ({
     sx,
     color,
     fontSize,
