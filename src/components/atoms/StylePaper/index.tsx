@@ -7,6 +7,7 @@ export const StylePaper: React.VFC<PaperProps> = ({
   return (
     <Paper
       sx={sx}
+      component = "form"
     >
       {children}
     </Paper>
