@@ -19,7 +19,7 @@ export const ButtonIcon: React.VFC<IconButtonProps> = ({
       disableRipple={disableRipple}
       size={size}
       sx={sx}
-      onClick={() => onClick}
+      onClick={onClick}
     >
       {children}
     </IconButton>

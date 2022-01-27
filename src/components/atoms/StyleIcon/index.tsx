@@ -11,8 +11,6 @@ export const StyleIcon: React.VFC<IconProps> = ({
     sx={sx}
     color={color}
     fontSize={fontSize}
-    >
-      {children}
-    </Icon>
+    >{children}</Icon>
   );
 };
