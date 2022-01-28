@@ -2,8 +2,8 @@
 import { InputBase, InputBaseProps} from "@mui/material";
 import { forwardRef, Ref } from "react";
 
-export const TextInputBase = forwardRef<HTMLInputElement, InputBaseProps>(
-  (props: InputBaseProps, ref: Ref<HTMLInputElement>) => {
+export const TextInputBase = forwardRef<HTMLInputElement | number | null, InputBaseProps>(
+  (props: InputBaseProps, ref: Ref<HTMLInputElement | number | null>) => {
     return (
       <InputBase
         placeholder={props.placeholder}
