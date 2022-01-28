@@ -7,6 +7,19 @@ export const Recoder = () => {
     const inputRefCount = useRef<number | null>(0)
     const [state, dispatch] = useReducer(reducerTextChangeNumber,inputRefCount)
     const [fieldNumber,setFieldNumber] = useState<number | null>(0)
+
+    const useInput = () => {
+        const [value,setValue] = useState("")
+        const input = <input
+            value={value}
+            onChange={e => setValue(e.target.value)}
+            type="text"
+        />
+        return [value,input]
+    }
+
+    const [username,userInput] = useInput()
+
     const onChange = () => {
         setFieldNumber(state.current)
     }
@@ -31,6 +44,8 @@ export const Recoder = () => {
                 onChange={onChange}
             />
         {fieldNumber}
+        {userInput}
+        {username}
         </div>
     )
 }
