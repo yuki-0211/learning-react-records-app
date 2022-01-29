@@ -8,7 +8,7 @@ export const TextInputBase = forwardRef<HTMLInputElement | number | null, InputB
       <InputBase
         placeholder={props.placeholder}
         inputRef={ref}
-        onChange={props.onChange}
+        onChange={e => props.onChange?.(e)}
         style={props.style}
         inputProps={props.inputProps}
         value={props.value}

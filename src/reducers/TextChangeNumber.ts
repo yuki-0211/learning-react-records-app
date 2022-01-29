@@ -1,23 +1,27 @@
-import { MutableRefObject } from "react";
 
 interface Store {
-    count:number
+    count:string | undefined
 }
 type AcctionType =
     | {type:"increment"}
     | {type:"decrement"}
+    | {type:"input", payload : string}
 
-export const reducerTextChangeNumber = (state:MutableRefObject<number|null>, action:AcctionType) => {
-  if (state.current === null) {
-    return state
-  }
+export const reducerTextChangeNumber = (state:Store, action:AcctionType) => {
+  /*
+  Failure Example
+    case 'increment':
+      state.count = String(Number(state.count) + 1)
+      return state
+  In this code, state.current is updated, but no rendering is done because there is no change in the state.
+  */
   switch (action.type) {
     case 'increment':
-      state.current = state.current + 1
-      return state
+      return { count: String(Number(state.count) + 1) }
     case 'decrement':
-      state.current = state.current - 1
-      return state;
+      return { count: String(Number(state.count) - 1) }
+    case 'input':
+      return { count: action.payload }
     default:
       return state;
   }

@@ -1,51 +1,24 @@
-import { useState } from "react"
-import { MouseEventHandler, useReducer, useRef } from "react"
-import { TextChangeNumber } from "../components/organisms/TextChangeNumber"
+import { ChangeEvent, useCallback, useReducer } from "react"
+import { TextButtonNumberForm} from "../components/organisms/TextButtonNumberForm"
 import { reducerTextChangeNumber } from "../reducers/TextChangeNumber"
 
+const initialInput = {count:undefined}
 export const Recoder = () => {
-    const inputRefCount = useRef<number | null>(0)
-    const [state, dispatch] = useReducer(reducerTextChangeNumber,inputRefCount)
-    const [fieldNumber,setFieldNumber] = useState<number | null>(0)
+    const [state, dispatch] = useReducer(reducerTextChangeNumber,initialInput)
+    const decrement = useCallback(() => dispatch({ type: "decrement" }),[])
+    const increment = useCallback(() => dispatch({ type: "increment" }),[])
+    const onChange = useCallback((e:ChangeEvent<HTMLInputElement>) => dispatch({ type: "input",payload:e.target.value }),[])
 
-    const useInput = () => {
-        const [value,setValue] = useState("")
-        const input = <input
-            value={value}
-            onChange={e => setValue(e.target.value)}
-            type="text"
-        />
-        return [value,input]
-    }
-
-    const [username,userInput] = useInput()
-
-    const onChange = () => {
-        setFieldNumber(state.current)
-    }
-    const clickDecrement: MouseEventHandler<HTMLButtonElement> = (e) => {
-        console.log(fieldNumber)
-        console.log(state.current)
-        dispatch({ type: "decrement" })
-    }
-    const clickIncrement: MouseEventHandler<HTMLButtonElement> = (e) => {
-        console.log(fieldNumber)
-        console.log(state.current)
-        dispatch({ type: "increment" })
-    }
-    console.log(inputRefCount.current)
     return (
         <div>
-            <TextChangeNumber
-                count={fieldNumber}
-                onClickDecrease={clickDecrement}
-                onClickIncrease={clickIncrement}
-                ref={state}
+            <TextButtonNumberForm
+                count={state.count}
+                onClickDecrease={decrement}
+                onClickIncrease={increment}
                 onChange={onChange}
+                inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
             />
-        {fieldNumber}
-        {userInput}
-        {username}
+            {state.count}
         </div>
     )
 }
