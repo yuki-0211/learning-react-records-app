@@ -7,7 +7,7 @@ type AcctionType =
     | {type:"decrement"}
     | {type:"input", payload : string}
 
-export const reducerTextChangeNumber = (state:Store, action:AcctionType) => {
+export const reducerTextButtonNumberForm = (state:Store, action:AcctionType) => {
   /*
   Failure Example
     case 'increment':

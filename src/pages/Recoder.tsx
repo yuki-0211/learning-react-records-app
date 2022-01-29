@@ -1,13 +1,8 @@
-import { ChangeEvent, useCallback, useReducer } from "react"
 import { TextButtonNumberForm} from "../components/organisms/TextButtonNumberForm"
-import { reducerTextChangeNumber } from "../reducers/TextChangeNumber"
+import { useTextButtonNumberForm } from "../hooks/useTextButtonNumberForm"
 
-const initialInput = {count:undefined}
 export const Recoder = () => {
-    const [state, dispatch] = useReducer(reducerTextChangeNumber,initialInput)
-    const decrement = useCallback(() => dispatch({ type: "decrement" }),[])
-    const increment = useCallback(() => dispatch({ type: "increment" }),[])
-    const onChange = useCallback((e:ChangeEvent<HTMLInputElement>) => dispatch({ type: "input",payload:e.target.value }),[])
+    const { state, decrement, increment, onChange } = useTextButtonNumberForm()
 
     return (
         <div>
