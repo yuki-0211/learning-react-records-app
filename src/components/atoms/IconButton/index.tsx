@@ -1,18 +1,21 @@
-import { IconButton,IconButtonProps } from "@mui/material";
+import {
+  IconButton as MuiIconButton,
+  IconButtonProps as MuiIconButtonProps,
+} from '@mui/material';
+interface IconButtonProps extends MuiIconButtonProps {}
 
-export const ButtonIcon: React.VFC<IconButtonProps> = ({
-    
-  color = "primary",
+export const IconButton: React.VFC<IconButtonProps> = ({
+  color = 'primary',
   disabled = false,
   disableFocusRipple = false,
   disableRipple = false,
-  size = "medium",
+  size = 'medium',
   sx,
   onClick,
   children,
 }) => {
   return (
-    <IconButton
+    <MuiIconButton
       color={color}
       disabled={disabled}
       disableFocusRipple={disableFocusRipple}
@@ -22,6 +25,6 @@ export const ButtonIcon: React.VFC<IconButtonProps> = ({
       onClick={onClick}
     >
       {children}
-    </IconButton>
+    </MuiIconButton>
   );
 };
