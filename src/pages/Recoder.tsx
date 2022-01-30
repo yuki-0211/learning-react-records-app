@@ -1,3 +1,4 @@
+import { BasicCard } from '../components/organisms/BasicCard';
 import { TextButtonNumberForm } from '../components/organisms/TextButtonNumberForm';
 import { useTextButtonNumberForm } from '../hooks/useTextButtonNumberForm';
 
@@ -14,6 +15,7 @@ export const Recoder = () => {
         inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
       />
       {state.count}
+      <BasicCard />
     </div>
   );
 };

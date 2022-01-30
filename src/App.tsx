@@ -4,7 +4,7 @@ import { Recoder } from './pages/Recoder';
 function App() {
   return (
     <div className="App">
-      <Recoder/>
+      <Recoder />
     </div>
   );
 }
