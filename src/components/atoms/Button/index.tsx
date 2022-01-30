@@ -1,20 +1,25 @@
-import { Button, ButtonProps } from "@mui/material";
+import {
+  Button as MuiButton,
+  ButtonProps as MuiButtonProps,
+} from '@mui/material';
 
-export const ButtonCharacter: React.VFC<ButtonProps> = ({
-  color = "primary",
+export interface ButtonProps extends MuiButtonProps {}
+
+export const Button: React.VFC<ButtonProps> = ({
+  color = 'primary',
   disabled = false,
   disableElevation = false,
   disableFocusRipple = false,
   disableRipple = false,
   fullWidth = false,
-  size = "medium",
-  variant = "text",
+  size = 'medium',
+  variant = 'text',
   sx,
   onClick,
   children,
 }) => {
   return (
-    <Button
+    <MuiButton
       color={color}
       disabled={disabled}
       disableElevation={disableElevation}
@@ -27,6 +32,6 @@ export const ButtonCharacter: React.VFC<ButtonProps> = ({
       onClick={() => onClick}
     >
       {children}
-    </Button>
+    </MuiButton>
   );
 };
