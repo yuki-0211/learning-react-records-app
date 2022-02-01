@@ -1,15 +1,17 @@
 import { usePagination } from '../../hooks/usePagination';
+import { useSelect } from '../../hooks/useSelect';
 import { useTextButtonNumberForm } from '../../hooks/useTextButtonNumberForm';
 import { useTextForm } from '../../hooks/useTextField';
 import { Grid } from '../atoms/Grid';
-import { OutlinedInput } from '../atoms/OutlinedInput';
 import { Pagination } from '../atoms/Pagination';
 import { FormBase } from '../molecules/FormBase';
+import { SelectVariants } from '../molecules/SelectVariants';
 import { TextButtonNumberForm } from '../organisms/TextButtonNumberForm';
+import { demoData } from './demoData';
 
 export const InputRecode = () => {
   const { state: title, onChange: titleOnChange } = useTextForm();
-  const { state: type, onChange: typeOnChange } = useTextForm();
+  const { state: type, onChange: typeOnChange } = useSelect();
   const { state: rankState, onChange: rankOnChange } = usePagination();
   const {
     state: timeState,
@@ -18,6 +20,8 @@ export const InputRecode = () => {
     onChange: timeOnChange,
   } = useTextButtonNumberForm();
   const { state: comment, onChange: commentOnChange } = useTextForm();
+
+  const selectData = demoData();
 
   return (
     <Grid
@@ -36,7 +40,12 @@ export const InputRecode = () => {
         type
       </Grid>
       <Grid item xs={8}>
-        <FormBase value={type} onChange={typeOnChange} />
+        <SelectVariants
+          value={type}
+          onChange={typeOnChange}
+          label={'type'}
+          items={selectData}
+        />
       </Grid>
       <Grid item xs={4}>
         time

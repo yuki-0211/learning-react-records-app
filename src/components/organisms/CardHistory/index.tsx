@@ -3,7 +3,7 @@ import { Card } from '../../atoms/Card';
 import { CardActions } from '../../atoms/CardActions';
 import { CardContent } from '../../atoms/CardContent';
 import { Typography } from '../../atoms/Typograpy';
-import { test_data } from './test_data';
+import { demo_data } from './demo_data';
 
 interface recode {
   title: string;
@@ -15,7 +15,7 @@ interface recode {
 }
 
 export const CardHistory: React.VFC = () => {
-  const card_data: recode[] = test_data();
+  const card_data: recode[] = demo_data();
   return (
     <div>
       {card_data.map((data, index) => (
