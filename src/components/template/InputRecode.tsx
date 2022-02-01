@@ -1,19 +1,16 @@
+import { usePagination } from '../../hooks/usePagination';
 import { useTextButtonNumberForm } from '../../hooks/useTextButtonNumberForm';
 import { useTextForm } from '../../hooks/useTextField';
 import { Grid } from '../atoms/Grid';
 import { OutlinedInput } from '../atoms/OutlinedInput';
+import { Pagination } from '../atoms/Pagination';
 import { FormBase } from '../molecules/FormBase';
 import { TextButtonNumberForm } from '../organisms/TextButtonNumberForm';
 
 export const InputRecode = () => {
   const { state: title, onChange: titleOnChange } = useTextForm();
   const { state: type, onChange: typeOnChange } = useTextForm();
-  const {
-    state: rankState,
-    decrement: rankDecrement,
-    increment: rankIncrement,
-    onChange: rankOnChange,
-  } = useTextButtonNumberForm();
+  const { state: rankState, onChange: rankOnChange } = usePagination();
   const {
     state: timeState,
     decrement: timeDecrement,
@@ -56,10 +53,11 @@ export const InputRecode = () => {
         rank
       </Grid>
       <Grid item xs={8}>
-        <TextButtonNumberForm
-          count={rankState.count}
-          onClickDecrease={rankDecrement}
-          onClickIncrease={rankIncrement}
+        <Pagination
+          count={5}
+          variant="text"
+          color="primary"
+          defaultPage={3}
           onChange={rankOnChange}
         />
       </Grid>
