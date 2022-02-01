@@ -11,6 +11,7 @@ export const IconButton: React.VFC<IconButtonProps> = ({
   disableFocusRipple = false,
   disableRipple = false,
   size = 'medium',
+  edge = 'start',
   sx,
   onClick,
   children,
@@ -22,6 +23,7 @@ export const IconButton: React.VFC<IconButtonProps> = ({
       disableFocusRipple={disableFocusRipple}
       disableRipple={disableRipple}
       size={size}
+      edge={edge}
       sx={sx}
       onClick={onClick}
     >

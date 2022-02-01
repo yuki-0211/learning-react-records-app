@@ -1,5 +1,6 @@
-import { BasicCard } from '../components/organisms/BasicCard';
+import { CardHistory } from '../components/organisms/CardHistory';
 import { TextButtonNumberForm } from '../components/organisms/TextButtonNumberForm';
+import { InputRecode } from '../components/template/InputRecode';
 import { useTextButtonNumberForm } from '../hooks/useTextButtonNumberForm';
 
 export const Recoder = () => {
@@ -12,10 +13,10 @@ export const Recoder = () => {
         onClickDecrease={decrement}
         onClickIncrease={increment}
         onChange={onChange}
-        inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
       />
       {state.count}
-      <BasicCard />
+      <InputRecode />
+      <CardHistory />
     </div>
   );
 };

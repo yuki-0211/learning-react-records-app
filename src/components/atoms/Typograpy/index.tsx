@@ -5,6 +5,15 @@ import {
 
 interface TypographyProps extends MuiTypographyProps {}
 
-export const Typograpys: React.VFC<TypographyProps> = ({ sx, children }) => {
-  return <MuiTypography sx={sx}>{children}</MuiTypography>;
+export const Typography: React.VFC<TypographyProps> = ({
+  variant,
+  noWrap,
+  sx,
+  children,
+}) => {
+  return (
+    <MuiTypography variant={variant} noWrap={noWrap} sx={sx}>
+      {children}
+    </MuiTypography>
+  );
 };
