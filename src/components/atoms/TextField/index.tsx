@@ -1,19 +1,21 @@
 import {
-  InputBase as MuiInputBase,
-  InputBaseProps as MuiInputBaseProps,
+  TextField as MuiTextField,
+  StandardTextFieldProps as MuiTextFieldProps,
 } from '@mui/material';
 import { forwardRef, Ref } from 'react';
 
-interface InputBaseProps extends MuiInputBaseProps {}
+interface TextFieldProps extends MuiTextFieldProps {}
 
-export const InputBase = forwardRef<
+export const TextField = forwardRef<
   HTMLInputElement | number | null,
-  InputBaseProps
->((props: InputBaseProps, ref: Ref<HTMLInputElement | number | null>) => {
+  TextFieldProps
+>((props: TextFieldProps, ref: Ref<HTMLInputElement | number | null>) => {
   return (
-    <MuiInputBase
+    <MuiTextField
       placeholder={props.placeholder}
       inputRef={ref}
+      label={props.label}
+      helperText={props.helperText}
       onChange={(e) => props.onChange?.(e)}
       style={props.style}
       inputProps={props.inputProps}
@@ -21,6 +23,8 @@ export const InputBase = forwardRef<
       size={props.size}
       autoFocus={props.autoFocus}
       fullWidth={props.fullWidth}
+      variant="standard"
+      sx={props.sx}
     />
   );
 });
