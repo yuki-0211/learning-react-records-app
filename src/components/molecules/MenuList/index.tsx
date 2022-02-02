@@ -4,11 +4,20 @@ import { ListItemButton } from '../../atoms/ListItemButton';
 import { ListItemIcon } from '../../atoms/ListItemIcon';
 import { ListItemText } from '../../atoms/ListItemText/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import { SvgIconTypeMap } from '@mui/material';
+import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 interface Props {
-  onClick: (open: boolean) => void;
-  onKeyDown: (open: boolean) => void;
-  list: string[];
+  onClick: (
+    open: boolean
+  ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
+  onKeyDown: (
+    open: boolean
+  ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
+  list: {
+    name: string;
+    icon: JSX.Element;
+  }[];
 }
 
 export const MenuList: React.VFC<Props> = ({ onClick, onKeyDown, list }) => (
@@ -19,11 +28,9 @@ export const MenuList: React.VFC<Props> = ({ onClick, onKeyDown, list }) => (
   >
     <List>
       {list.map((text, index) => (
-        <ListItemButton key={text}>
-          <ListItemIcon>
-            <MenuIcon />
-          </ListItemIcon>
-          <ListItemText primary={text} />
+        <ListItemButton key={text.name}>
+          <ListItemIcon>{text.icon}</ListItemIcon>
+          <ListItemText primary={text.name} />
         </ListItemButton>
       ))}
     </List>
