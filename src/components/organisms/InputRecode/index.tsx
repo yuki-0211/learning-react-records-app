@@ -1,8 +1,11 @@
+import { TextField } from '@mui/material';
+import { useDatePicker } from '../../../hooks/useDatePicker';
 import { usePagination } from '../../../hooks/usePagination';
 import { useSelect } from '../../../hooks/useSelect';
 import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
 import { useTextForm } from '../../../hooks/useTextField';
 import { Box } from '../../atoms/Box';
+import { DatePicker } from '../../atoms/DatePicker';
 import { Grid } from '../../atoms/Grid';
 import { Pagination } from '../../atoms/Pagination';
 import { FormBase } from '../../molecules/FormBase';
@@ -22,6 +25,7 @@ export const InputRecode = () => {
     onChange: timeOnChange,
   } = useTextButtonNumberForm();
   const { state: comment, onChange: commentOnChange } = useTextForm();
+  const { state: date, onChange: dateOnChange } = useDatePicker();
 
   const selectData = demoData();
 
@@ -82,6 +86,26 @@ export const InputRecode = () => {
             color="primary"
             defaultPage={3}
             onChange={rankOnChange}
+          />
+        </Box>
+      </Grid>
+      <Grid item xs={12}>
+        <TitleBox title="leaning date" />
+      </Grid>
+      <Grid item xs={12}>
+        <Box
+          sx={{
+            mx: 4,
+            p: '2px 8px',
+            display: 'flex',
+            width: 270,
+          }}
+        >
+          <DatePicker
+            label="day"
+            value={date}
+            onChange={dateOnChange}
+            renderInput={(params) => <TextField {...params} />}
           />
         </Box>
       </Grid>

@@ -10,7 +10,7 @@ export const TitleBox: React.VFC<Props> = ({ title }) => {
       <Box
         sx={{
           width: 270,
-          height: 40,
+          height: 23,
         }}
       />
       <Box
@@ -19,7 +19,7 @@ export const TitleBox: React.VFC<Props> = ({ title }) => {
           p: '2px 4px',
           alignItems: 'center',
           width: 270,
-          height: 30,
+          height: 25,
         }}
       >
         {title}
