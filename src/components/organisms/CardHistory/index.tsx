@@ -1,3 +1,4 @@
+import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { CardActions } from '../../atoms/CardActions';
@@ -19,25 +20,27 @@ export const CardHistory: React.VFC = () => {
   return (
     <div>
       {card_data.map((data, index) => (
-        <Card variant="outlined">
+        <Card
+          variant="outlined"
+          sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}
+        >
           <CardContent>
-            <Typography variant="h3" gutterBottom>
+            <Typography variant="h4" gutterBottom>
               {data.title}
             </Typography>
+            <Box
+              sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}
+            >
+              <Typography variant="h4">{data.time}</Typography>
+              <Typography>hours</Typography>
+            </Box>
           </CardContent>
           <CardContent>
             <Typography>{data.type}</Typography>
-          </CardContent>
-          <CardContent>
-            <Typography>{data.time}</Typography>
-          </CardContent>
-          <CardContent>
             <Typography>{data.rank}</Typography>
           </CardContent>
           <CardContent>
             <Typography>{data.date}</Typography>
-          </CardContent>
-          <CardContent>
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions>
