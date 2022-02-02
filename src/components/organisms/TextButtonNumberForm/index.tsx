@@ -20,7 +20,9 @@ export const TextButtonNumberForm: React.VFC<Props> = ({
   onChange,
 }) => {
   return (
-    <Paper sx={{ p: '2px 4px', display: 'flex', width: 270 }}>
+    <Paper
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 270 }}
+    >
       <InputBase
         value={count}
         onChange={onChange}

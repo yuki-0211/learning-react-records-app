@@ -29,7 +29,7 @@ export const Button: React.VFC<ButtonProps> = ({
       size={size}
       variant={variant}
       sx={sx}
-      onClick={() => onClick}
+      onClick={onClick}
     >
       {children}
     </MuiButton>
