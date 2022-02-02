@@ -5,6 +5,7 @@ import { useSelect } from '../../../hooks/useSelect';
 import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
 import { useTextForm } from '../../../hooks/useTextField';
 import { Box } from '../../atoms/Box';
+import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
 import { Grid } from '../../atoms/Grid';
 import { Pagination } from '../../atoms/Pagination';
@@ -14,18 +15,30 @@ import { TextButtonNumberForm } from '../../molecules/TextButtonNumberForm';
 import { TitleBox } from '../../molecules/TitleBox';
 import { demoData } from './demoData';
 
-export const InputRecode = () => {
+export const InputRecord = () => {
   const { state: title, onChange: titleOnChange } = useTextForm();
   const { state: type, onChange: typeOnChange } = useSelect();
-  const { state: rankState, onChange: rankOnChange } = usePagination();
+  const { state: rank, onChange: rankOnChange } = usePagination();
   const {
-    state: timeState,
+    state: time,
     decrement: timeDecrement,
     increment: timeIncrement,
     onChange: timeOnChange,
   } = useTextButtonNumberForm();
   const { state: comment, onChange: commentOnChange } = useTextForm();
   const { state: date, onChange: dateOnChange } = useDatePicker();
+
+  const sendOnClick = () => {
+    const recordDate = {
+      title: title,
+      type: type,
+      rank: rank,
+      time: time.count,
+      date: date,
+      comment: comment,
+    };
+    console.log(recordDate);
+  };
 
   const selectData = demoData();
 
@@ -63,7 +76,7 @@ export const InputRecode = () => {
       </Grid>
       <Grid item xs={12}>
         <TextButtonNumberForm
-          count={timeState.count}
+          count={time.count}
           onClickDecrease={timeDecrement}
           onClickIncrease={timeIncrement}
           onChange={timeOnChange}
@@ -119,6 +132,16 @@ export const InputRecode = () => {
           label="comment"
           helper="add your comment"
         />
+        <Box
+          sx={{
+            mx: 4,
+            p: '2px 8px',
+            display: 'flex',
+            width: 270,
+          }}
+        >
+          <Button onClick={sendOnClick}>Send</Button>
+        </Box>
       </Grid>
     </Grid>
   );

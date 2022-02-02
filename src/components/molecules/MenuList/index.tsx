@@ -14,13 +14,22 @@ interface Props {
   onKeyDown: (
     open: boolean
   ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
+  onClickButton: (
+    url: string
+  ) => (event: React.KeyboardEvent | React.MouseEvent) => void;
   list: {
     name: string;
     icon: JSX.Element;
+    url: string;
   }[];
 }
 
-export const MenuList: React.VFC<Props> = ({ onClick, onKeyDown, list }) => (
+export const MenuList: React.VFC<Props> = ({
+  onClick,
+  onKeyDown,
+  onClickButton,
+  list,
+}) => (
   <Box
     role="presentation"
     onClick={onClick(false)}
@@ -28,7 +37,7 @@ export const MenuList: React.VFC<Props> = ({ onClick, onKeyDown, list }) => (
   >
     <List>
       {list.map((text, index) => (
-        <ListItemButton key={text.name}>
+        <ListItemButton key={text.name} onClick={onClickButton(text.url)}>
           <ListItemIcon>{text.icon}</ListItemIcon>
           <ListItemText primary={text.name} />
         </ListItemButton>
