@@ -1,14 +1,19 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { AppBarBasic } from './components/molecules/AppBarBasic';
 import SwipeableTemporaryDrawer from './components/organisms/SwipeableTemporaryDrawer';
-import { Recoder } from './pages/Recoder';
+import { History } from './pages/History';
+import { Record } from './pages/Record';
+import { Setting } from './pages/Setting';
 
 function App() {
-  const onClick = () => {};
   return (
     <div className="App">
       <SwipeableTemporaryDrawer />
-      <Recoder />
+      <Routes>
+        <Route path="/" element={<Record />} />
+        <Route path="/history" element={<History />} />
+        <Route path="/contact" element={<Setting />} />
+      </Routes>
     </div>
   );
 }

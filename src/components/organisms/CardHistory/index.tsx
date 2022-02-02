@@ -6,7 +6,7 @@ import { CardContent } from '../../atoms/CardContent';
 import { Typography } from '../../atoms/Typograpy';
 import { demo_data } from './demo_data';
 
-interface recode {
+interface Record {
   title: string;
   type: string;
   time: number;
@@ -16,7 +16,7 @@ interface recode {
 }
 
 export const CardHistory: React.VFC = () => {
-  const card_data: recode[] = demo_data();
+  const card_data: Record[] = demo_data();
   return (
     <div>
       {card_data.map((data, index) => (
