@@ -1,5 +1,5 @@
 import { CardHistory } from '../components/organisms/CardHistory';
-import { InputRecode } from '../components/template/InputRecode';
+import { InputRecode } from '../components/organisms/InputRecode';
 
 export const Recoder = () => {
   return (

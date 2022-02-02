@@ -7,7 +7,7 @@ import { Typography } from '../../atoms/Typograpy';
 
 interface Props {
   pageName: string;
-  onClick: () => void;
+  onClick: (event: React.KeyboardEvent | React.MouseEvent) => void;
 }
 
 export const AppBarBasic: React.VFC<Props> = ({ pageName, onClick }) => {

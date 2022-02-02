@@ -1,12 +1,12 @@
-import { usePagination } from '../../hooks/usePagination';
-import { useSelect } from '../../hooks/useSelect';
-import { useTextButtonNumberForm } from '../../hooks/useTextButtonNumberForm';
-import { useTextForm } from '../../hooks/useTextField';
-import { Grid } from '../atoms/Grid';
-import { Pagination } from '../atoms/Pagination';
-import { FormBase } from '../molecules/FormBase';
-import { SelectVariants } from '../molecules/SelectVariants';
-import { TextButtonNumberForm } from '../organisms/TextButtonNumberForm';
+import { usePagination } from '../../../hooks/usePagination';
+import { useSelect } from '../../../hooks/useSelect';
+import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
+import { useTextForm } from '../../../hooks/useTextField';
+import { Grid } from '../../atoms/Grid';
+import { Pagination } from '../../atoms/Pagination';
+import { FormBase } from '../../molecules/FormBase';
+import { SelectVariants } from '../../molecules/SelectVariants';
+import { TextButtonNumberForm } from '../TextButtonNumberForm';
 import { demoData } from './demoData';
 
 export const InputRecode = () => {
@@ -30,16 +30,16 @@ export const InputRecode = () => {
       justifyItems="center"
       justifyContent="center"
     >
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         title
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12}>
         <FormBase value={title} onChange={titleOnChange} />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         type
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12}>
         <SelectVariants
           value={type}
           onChange={typeOnChange}
@@ -47,10 +47,10 @@ export const InputRecode = () => {
           items={selectData}
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         time
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12}>
         <TextButtonNumberForm
           count={timeState.count}
           onClickDecrease={timeDecrement}
@@ -58,10 +58,10 @@ export const InputRecode = () => {
           onChange={timeOnChange}
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         rank
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12}>
         <Pagination
           count={5}
           variant="text"
@@ -70,10 +70,10 @@ export const InputRecode = () => {
           onChange={rankOnChange}
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12}>
         comment
       </Grid>
-      <Grid item xs={8}>
+      <Grid item xs={12}>
         <FormBase value={comment} onChange={commentOnChange} />
       </Grid>
     </Grid>

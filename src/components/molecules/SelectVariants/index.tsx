@@ -12,7 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 
 interface Props {
   value: string;
-  onChange: (event: SelectChangeEvent<unknown>, child: ReactNode) => void;
+  onChange: (event: SelectChangeEvent<string>, child: ReactNode) => void;
   label: string;
   items: { id: string; value: string }[];
 }
