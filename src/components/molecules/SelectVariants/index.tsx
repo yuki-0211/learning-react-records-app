@@ -9,6 +9,7 @@ Failure Example
 Select Menu Item does not respond to Wrapped Component
 */
 import MenuItem from '@mui/material/MenuItem';
+import { Box } from '../../atoms/Box';
 
 interface Props {
   value: string;
@@ -24,8 +25,16 @@ export const SelectVariants: React.VFC<Props> = ({
   items,
 }) => {
   return (
-    <div>
-      <FormControl variant="standard" sx={{ m: 1, minWidth: 270 }}>
+    <Box
+      sx={{
+        mx: 4,
+        p: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        width: 270,
+      }}
+    >
+      <FormControl variant="standard" sx={{ minWidth: 270 }}>
         <InputLabel id="select-standard-label">{label}</InputLabel>
         <Select
           labelId="select-standard-label"
@@ -43,6 +52,6 @@ export const SelectVariants: React.VFC<Props> = ({
           })}
         </Select>
       </FormControl>
-    </div>
+    </Box>
   );
 };

@@ -19,7 +19,7 @@ export const CardHistory: React.VFC = () => {
   return (
     <div>
       {card_data.map((data, index) => (
-        <Card>
+        <Card variant="outlined">
           <CardContent>
             <Typography variant="h3" gutterBottom>
               {data.title}

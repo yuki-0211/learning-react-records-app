@@ -10,6 +10,7 @@ export const Grid: React.VFC<GridProps> = ({
   justifyContent,
   justifyItems,
   xs,
+  sx,
   children,
 }) => {
   return (
@@ -21,6 +22,7 @@ export const Grid: React.VFC<GridProps> = ({
       justifyContent={justifyContent}
       justifyItems={justifyItems}
       xs={xs}
+      sx={sx}
     >
       {children}
     </MuiGrid>

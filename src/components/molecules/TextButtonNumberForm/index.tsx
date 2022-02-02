@@ -5,12 +5,16 @@ import { Paper } from '../../atoms/Paper';
 import { InputBase } from '../../atoms/InputBase';
 import { textAlign } from '@mui/system';
 import { createStyles, makeStyles, Theme } from '@mui/material';
+import { TextField } from '../../atoms/TextField';
+import { Box } from '../../atoms/Box';
 
 interface Props {
   count: string | undefined;
   onClickIncrease: () => void;
   onClickDecrease: () => void;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label: string;
+  helper: string;
 }
 
 export const TextButtonNumberForm: React.VFC<Props> = ({
@@ -18,15 +22,26 @@ export const TextButtonNumberForm: React.VFC<Props> = ({
   onClickIncrease,
   onClickDecrease,
   onChange,
+  label,
+  helper,
 }) => {
   return (
-    <Paper
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 270 }}
+    <Box
+      sx={{
+        mx: 4,
+        p: '2px 4px',
+        display: 'flex',
+        alignItems: 'center',
+        width: 300,
+      }}
     >
-      <InputBase
+      <TextField
         value={count}
         onChange={onChange}
         inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+        label={label}
+        helperText={helper}
+        fullWidth
         sx={{ ml: 1, flex: 1 }}
       />
       <IconButton onClick={onClickIncrease}>
@@ -36,6 +51,6 @@ export const TextButtonNumberForm: React.VFC<Props> = ({
       <IconButton onClick={onClickDecrease}>
         <Icon>do_not_disturb_on</Icon>
       </IconButton>
-    </Paper>
+    </Box>
   );
 };
