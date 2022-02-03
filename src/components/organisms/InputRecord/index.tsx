@@ -1,9 +1,11 @@
 import { TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { useDatePicker } from '../../../hooks/useDatePicker';
 import { usePagination } from '../../../hooks/usePagination';
 import { useSelect } from '../../../hooks/useSelect';
 import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
 import { useTextForm } from '../../../hooks/useTextField';
+import { getRequest, postRequest } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
@@ -17,7 +19,11 @@ import { demoData } from './demoData';
 
 export const InputRecord = () => {
   const { state: title, onChange: titleOnChange } = useTextForm();
-  const { state: type, onChange: typeOnChange } = useSelect();
+  const {
+    state: type,
+    onChange: typeOnChange,
+    select,
+  } = useSelect(demoData(), '/types');
   const { state: rank, onChange: rankOnChange } = usePagination();
   const {
     state: time,
@@ -37,10 +43,8 @@ export const InputRecord = () => {
       date: date,
       comment: comment,
     };
-    console.log(recordDate);
+    postRequest({ URL: '/records', data: recordDate });
   };
-
-  const selectData = demoData();
 
   return (
     <Grid
@@ -68,7 +72,7 @@ export const InputRecord = () => {
           value={type}
           onChange={typeOnChange}
           label={'type'}
-          items={selectData}
+          items={select}
         />
       </Grid>
       <Grid item xs={12}>
