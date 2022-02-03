@@ -18,11 +18,12 @@ interface putProps {
   data: object;
   config?: AxiosRequestConfig<any>;
 }
+
 export const getRequest = async (props: getProps) => {
   await axios
     .get(props.URL, props?.config)
     .then((results) => {
-      props.setter(results);
+      props.setter(results.data);
     })
     .catch((error) => {
       if (error.response) {

@@ -1,3 +1,4 @@
+import { useCardHistory } from '../../../hooks/useCardHistory';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
@@ -16,7 +17,7 @@ interface Record {
 }
 
 export const CardHistory: React.VFC = () => {
-  const card_data: Record[] = demo_data();
+  const { state: card_data } = useCardHistory(demo_data(), '/records');
   return (
     <div>
       {card_data.map((data, index) => (

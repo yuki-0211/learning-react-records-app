@@ -1,14 +1,19 @@
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { SwipeableDrawer } from '../../atoms/SwipeableDrawer';
 import { AppBarBasic } from '../../molecules/AppBarBasic';
 import { MenuList } from '../../molecules/MenuList';
-import { demoData } from './demoData';
 import { useSwipeableTemporaryDrawer } from '../../../hooks/useSwipeableTemporaryDrawer';
 
-export default function SwipeableTemporaryDrawer() {
+interface page {
+  name: string;
+  icon: JSX.Element;
+  url: string;
+}
+interface Props {
+  list: page[];
+}
+export const SwipeableTemporaryDrawer: React.VFC<Props> = ({ list }) => {
   const { state, onChange, url, onClick } = useSwipeableTemporaryDrawer();
-
-  const list = demoData();
 
   let pageName: string = 'Not Found';
   list.forEach((page, index) => {
@@ -35,4 +40,4 @@ export default function SwipeableTemporaryDrawer() {
       </SwipeableDrawer>
     </Fragment>
   );
-}
+};
