@@ -10,9 +10,16 @@ export default function SwipeableTemporaryDrawer() {
 
   const list = demoData();
 
+  let pageName: string = 'Not Found';
+  list.forEach((page, index) => {
+    if (page.url === url) {
+      pageName = page.name;
+    }
+  });
+
   return (
     <Fragment key="left">
-      <AppBarBasic onClick={onChange(true)} pageName={url} />
+      <AppBarBasic onClick={onChange(true)} pageName={pageName} />
       <SwipeableDrawer
         anchor="left"
         open={state}
