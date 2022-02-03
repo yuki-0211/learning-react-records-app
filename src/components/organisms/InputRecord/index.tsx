@@ -137,7 +137,7 @@ export const InputRecord = () => {
             mx: 4,
             p: '2px 8px',
             display: 'flex',
-            width: 270,
+            width: '10%',
           }}
         >
           <Button onClick={sendOnClick}>Send</Button>
