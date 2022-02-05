@@ -7,15 +7,6 @@ import { CardContent } from '../../atoms/CardContent';
 import { Typography } from '../../atoms/Typograpy';
 import { demo_data } from './demo_data';
 
-interface Record {
-  title: string;
-  type: string;
-  time: number;
-  rank: number;
-  date: number;
-  comment: string;
-}
-
 export const CardHistory: React.VFC = () => {
   const { state: card_data } = useCardHistory(demo_data(), '/records');
   return (
