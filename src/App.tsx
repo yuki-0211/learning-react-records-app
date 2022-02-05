@@ -5,8 +5,13 @@ import { History } from './pages/History';
 import { Record } from './pages/Record';
 import { Setting } from './pages/Setting';
 import MenuIcon from '@mui/icons-material/Menu';
+import {
+  swipeableTemporaryDrawerContext,
+  swipeableTemporaryDrawerState,
+} from './context/swipeableTemproraryDrawer';
 
 function App() {
+  const ctxSwipeableTemporaryDrawer = swipeableTemporaryDrawerState();
   const pageName = [
     { name: 'Record', icon: <MenuIcon />, url: '/' },
     { name: 'Hidtory', icon: <MenuIcon />, url: '/history' },
@@ -14,7 +19,11 @@ function App() {
   ];
   return (
     <div className="App">
-      <SwipeableTemporaryDrawer list={pageName} />
+      <swipeableTemporaryDrawerContext.Provider
+        value={ctxSwipeableTemporaryDrawer}
+      >
+        <SwipeableTemporaryDrawer list={pageName} />
+      </swipeableTemporaryDrawerContext.Provider>
       <Routes>
         <Route path="/" element={<Record />} />
         <Route path="/history" element={<History />} />
