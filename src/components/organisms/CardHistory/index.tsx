@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { cardHistoryContext } from '../../../context/Recode/cardHistory';
 import { useCardHistory } from '../../../hooks/useCardHistory';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
@@ -8,10 +10,10 @@ import { Typography } from '../../atoms/Typograpy';
 import { demo_data } from './demo_data';
 
 export const CardHistory: React.VFC = () => {
-  const { state: card_data } = useCardHistory(demo_data(), '/records');
+  const ctx = useContext(cardHistoryContext);
   return (
     <div>
-      {card_data.map((data, index) => (
+      {ctx.cardData.map((data, index) => (
         <Card
           variant="outlined"
           sx={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}

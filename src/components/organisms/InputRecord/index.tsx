@@ -1,11 +1,7 @@
 import { TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useDatePicker } from '../../../hooks/useDatePicker';
-import { usePagination } from '../../../hooks/usePagination';
-import { useSelect } from '../../../hooks/useSelect';
-import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
-import { useTextForm } from '../../../hooks/useTextField';
-import { getRequest, postRequest } from '../../../lib/axios';
+import { useContext } from 'react';
+import { inputRecordContext } from '../../../context/Recode/inputRecord';
+import { postRequest } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
@@ -15,37 +11,20 @@ import { FormBase } from '../../molecules/FormBase';
 import { SelectVariants } from '../../molecules/SelectVariants';
 import { TextButtonNumberForm } from '../../molecules/TextButtonNumberForm';
 import { TitleBox } from '../../molecules/TitleBox';
-import { demoData } from './demoData';
 
 export const InputRecord = () => {
-  const { state: title, onChange: titleOnChange } = useTextForm();
-  const {
-    state: type,
-    onChange: typeOnChange,
-    select,
-  } = useSelect(demoData(), '/types');
-  const { state: rank, onChange: rankOnChange } = usePagination();
-  const {
-    state: time,
-    decrement: timeDecrement,
-    increment: timeIncrement,
-    onChange: timeOnChange,
-  } = useTextButtonNumberForm();
-  const { state: comment, onChange: commentOnChange } = useTextForm();
-  const { state: date, onChange: dateOnChange } = useDatePicker();
-
+  const ctx = useContext(inputRecordContext);
   const sendOnClick = () => {
     const recordDate = {
-      title: title,
-      type: type,
-      rank: rank,
-      time: time.count,
-      date: date,
-      comment: comment,
+      title: ctx.title,
+      type: ctx.type,
+      rank: ctx.rank,
+      time: ctx.time.count,
+      date: ctx.date,
+      comment: ctx.comment,
     };
     postRequest({ URL: '/records', data: recordDate });
   };
-
   return (
     <Grid
       container
@@ -58,8 +37,8 @@ export const InputRecord = () => {
       </Grid>
       <Grid item xs={12}>
         <FormBase
-          value={title}
-          onChange={titleOnChange}
+          value={ctx.title}
+          onChange={ctx.titleOnChange}
           label="title"
           helper="What you have learned."
         />
@@ -69,10 +48,10 @@ export const InputRecord = () => {
       </Grid>
       <Grid item xs={12}>
         <SelectVariants
-          value={type}
-          onChange={typeOnChange}
+          value={ctx.type}
+          onChange={ctx.typeOnChange}
           label={'type'}
-          items={select}
+          items={ctx.select}
         />
       </Grid>
       <Grid item xs={12}>
@@ -80,10 +59,10 @@ export const InputRecord = () => {
       </Grid>
       <Grid item xs={12}>
         <TextButtonNumberForm
-          count={time.count}
-          onClickDecrease={timeDecrement}
-          onClickIncrease={timeIncrement}
-          onChange={timeOnChange}
+          count={ctx.time.count}
+          onClickDecrease={ctx.timeDecrement}
+          onClickIncrease={ctx.timeIncrement}
+          onChange={ctx.timeOnChange}
           label="learning times"
           helper="What hours you have studied."
         />
@@ -102,7 +81,7 @@ export const InputRecord = () => {
             variant="text"
             color="primary"
             defaultPage={3}
-            onChange={rankOnChange}
+            onChange={ctx.rankOnChange}
           />
         </Box>
       </Grid>
@@ -120,8 +99,8 @@ export const InputRecord = () => {
         >
           <DatePicker
             label="day"
-            value={date}
-            onChange={dateOnChange}
+            value={ctx.date}
+            onChange={ctx.dateOnChange}
             renderInput={(params) => <TextField {...params} />}
           />
         </Box>
@@ -131,8 +110,8 @@ export const InputRecord = () => {
       </Grid>
       <Grid item xs={12}>
         <FormBase
-          value={comment}
-          onChange={commentOnChange}
+          value={ctx.comment}
+          onChange={ctx.commentOnChange}
           label="comment"
           helper="add your comment"
         />

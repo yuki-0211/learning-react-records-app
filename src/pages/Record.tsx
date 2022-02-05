@@ -1,36 +1,30 @@
 import { Grid } from '../components/atoms/Grid';
 import { CardHistory } from '../components/organisms/CardHistory';
 import { InputRecord } from '../components/organisms/InputRecord';
-import { useDatePicker } from '../hooks/useDatePicker';
-import { usePagination } from '../hooks/usePagination';
-import { useSelect } from '../hooks/useSelect';
-import { useTextButtonNumberForm } from '../hooks/useTextButtonNumberForm';
-import { useTextForm } from '../hooks/useTextField';
-import { initInputRecord } from '../init/initInputRecord';
+import React from 'react';
+import {
+  inputRecordContext,
+  inputRecordState,
+} from '../context/Recode/inputRecord';
+import {
+  cardHistoryContext,
+  cardHistoyState,
+} from '../context/Recode/cardHistory';
 
 export const Record = () => {
-  const { state: title, onChange: titleOnChange } = useTextForm();
-  const {
-    state: type,
-    onChange: typeOnChange,
-    select,
-  } = useSelect(initInputRecord(), '/types');
-  const { state: rank, onChange: rankOnChange } = usePagination();
-  const {
-    state: time,
-    decrement: timeDecrement,
-    increment: timeIncrement,
-    onChange: timeOnChange,
-  } = useTextButtonNumberForm();
-  const { state: comment, onChange: commentOnChange } = useTextForm();
-  const { state: date, onChange: dateOnChange } = useDatePicker();
+  const ctxInputRecord = inputRecordState();
+  const ctxCardHistory = cardHistoyState();
   return (
     <Grid container>
       <Grid item xs={4}>
-        <InputRecord />
+        <inputRecordContext.Provider value={ctxInputRecord}>
+          <InputRecord />
+        </inputRecordContext.Provider>
       </Grid>
       <Grid item xs={8} sx={{ maxHeight: 680, overflow: 'auto' }}>
-        <CardHistory />
+        <cardHistoryContext.Provider value={ctxCardHistory}>
+          <CardHistory />
+        </cardHistoryContext.Provider>
       </Grid>
     </Grid>
   );
