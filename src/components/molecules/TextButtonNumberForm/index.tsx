@@ -1,10 +1,6 @@
 import { IconButton } from '../../atoms/IconButton';
 import { Divider } from '../../atoms/Divider';
 import { Icon } from '../../atoms/Icon';
-import { Paper } from '../../atoms/Paper';
-import { InputBase } from '../../atoms/InputBase';
-import { textAlign } from '@mui/system';
-import { createStyles, makeStyles, Theme } from '@mui/material';
 import { TextField } from '../../atoms/TextField';
 import { Box } from '../../atoms/Box';
 
