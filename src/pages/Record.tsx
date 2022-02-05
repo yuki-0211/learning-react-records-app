@@ -5,11 +5,11 @@ import React from 'react';
 import {
   inputRecordContext,
   inputRecordState,
-} from '../context/Recode/inputRecord';
+} from '../contexts/Recode/inputRecord';
 import {
   cardHistoryContext,
   cardHistoyState,
-} from '../context/Recode/cardHistory';
+} from '../contexts/Recode/cardHistory';
 
 export const Record = () => {
   const ctxInputRecord = inputRecordState();

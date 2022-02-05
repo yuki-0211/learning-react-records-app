@@ -8,7 +8,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import {
   swipeableTemporaryDrawerContext,
   swipeableTemporaryDrawerState,
-} from './context/swipeableTemproraryDrawer';
+} from './contexts/swipeableTemproraryDrawer';
 
 function App() {
   const ctxSwipeableTemporaryDrawer = swipeableTemporaryDrawerState();
