@@ -1,1 +1,7 @@
-# Construction
+# Configuration
+
+## ESLint
+
+## Prettier
+
+## Typescript
