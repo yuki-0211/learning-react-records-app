@@ -32,7 +32,7 @@ yarn start
 ## Documentation
 
 * [Apprication](docs/application.md)
-* [Construction](docs/construction.md)
+* [Configuration](docs/configuration.md)
 * [Structure](docs/structure.md)
 * [Components](docs/components.md)
 * [State Management](docs/stateManagement.md)
