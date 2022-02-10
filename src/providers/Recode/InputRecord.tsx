@@ -1,5 +1,5 @@
 import { SelectChangeEvent } from '@mui/material';
-import React, { ChangeEvent, ReactNode } from 'react';
+import React, { ChangeEvent, createContext, ReactNode } from 'react';
 import { useDatePicker } from '../../hooks/useDatePicker';
 import { usePagination } from '../../hooks/usePagination';
 import { useSelect } from '../../hooks/useSelect';
@@ -30,29 +30,9 @@ interface typeContext {
     keyboardInputValue?: string | undefined
   ) => void;
 }
-const defaultContext: typeContext = {
-  title: '',
-  titleOnChange: () => {},
-  type: '',
-  typeOnChange: () => {},
-  select: [
-    {
-      id: '',
-      value: '',
-    },
-  ],
-  rank: 0,
-  rankOnChange: () => {},
-  time: { count: '' },
-  timeDecrement: () => {},
-  timeIncrement: () => {},
-  timeOnChange: () => {},
-  comment: '',
-  commentOnChange: () => {},
-  date: new Date(),
-  dateOnChange: () => {},
-};
-export const inputRecordState = () => {
+export const inputRecordContext = createContext({} as typeContext);
+
+export const InputRecordProvider = (props: React.PropsWithChildren<{}>) => {
   const { state: title, onChange: titleOnChange } = useTextForm();
   const {
     state: type,
@@ -69,23 +49,26 @@ export const inputRecordState = () => {
   const { state: comment, onChange: commentOnChange } = useTextForm();
   const { state: date, onChange: dateOnChange } = useDatePicker();
 
-  return {
-    title,
-    titleOnChange,
-    type,
-    typeOnChange,
-    select,
-    rank,
-    rankOnChange,
-    time,
-    timeDecrement,
-    timeIncrement,
-    timeOnChange,
-    comment,
-    commentOnChange,
-    date,
-    dateOnChange,
-  };
+  return (
+    <inputRecordContext.Provider
+      value={{
+        title,
+        titleOnChange,
+        type,
+        typeOnChange,
+        select,
+        rank,
+        rankOnChange,
+        time,
+        timeDecrement,
+        timeIncrement,
+        timeOnChange,
+        comment,
+        commentOnChange,
+        date,
+        dateOnChange,
+      }}
+      {...props}
+    />
+  );
 };
-export const inputRecordContext =
-  React.createContext<typeContext>(defaultContext);
