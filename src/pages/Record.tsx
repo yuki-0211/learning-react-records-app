@@ -6,14 +6,10 @@ import {
   inputRecordContext,
   inputRecordState,
 } from '../contexts/Recode/inputRecord';
-import {
-  cardHistoryContext,
-  cardHistoyState,
-} from '../contexts/Recode/cardHistory';
+import { CardHistoyProvider } from '../contexts/Recode/cardHistory';
 
 export const Record = () => {
   const ctxInputRecord = inputRecordState();
-  const ctxCardHistory = cardHistoyState();
   return (
     <Grid container>
       <Grid item xs={4}>
@@ -22,9 +18,9 @@ export const Record = () => {
         </inputRecordContext.Provider>
       </Grid>
       <Grid item xs={8} sx={{ maxHeight: 680, overflow: 'auto' }}>
-        <cardHistoryContext.Provider value={ctxCardHistory}>
+        <CardHistoyProvider>
           <CardHistory />
-        </cardHistoryContext.Provider>
+        </CardHistoyProvider>
       </Grid>
     </Grid>
   );

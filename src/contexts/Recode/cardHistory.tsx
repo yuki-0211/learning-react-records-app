@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { useCardHistory } from '../../hooks/useCardHistory';
 import { initCardHistory } from '../../init/initCardHistroy';
 
@@ -13,12 +13,10 @@ interface typeContext {
   }[];
 }
 
-const defaultContext: typeContext = { cardData: initCardHistory() };
+export const cardHistoryContext = createContext({} as typeContext);
 
-export const cardHistoyState = () => {
+export const CardHistoyProvider = (props: React.PropsWithChildren<{}>) => {
   const { state: cardData } = useCardHistory(initCardHistory(), '/records');
-  return { cardData };
-};
 
-export const cardHistoryContext =
-  React.createContext<typeContext>(defaultContext);
+  return <cardHistoryContext.Provider value={{ cardData }} {...props} />;
+};
