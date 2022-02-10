@@ -1,4 +1,4 @@
-import { Grid } from '../components/atoms/Grid';
+import { Box } from '../components/atoms/Box';
 import { CardHistory } from '../components/organisms/CardHistory';
 import { InputRecord } from '../components/organisms/InputRecord';
 import { CardHistoyProvider } from '../providers/Recode/CardHistory';
@@ -6,17 +6,17 @@ import { InputRecordProvider } from '../providers/Recode/InputRecord';
 
 export const Record = () => {
   return (
-    <Grid container>
-      <Grid item xs={4}>
+    <Box sx={{ display: 'grid', gridAutoColumns: '1fr', gridAutoRows: '80%' }}>
+      <Box sx={{ gridRow: '1', overflow: 'auto' }}>
         <InputRecordProvider>
           <InputRecord />
         </InputRecordProvider>
-      </Grid>
-      <Grid item xs={8} sx={{ maxHeight: 680, overflow: 'auto' }}>
+      </Box>
+      <Box sx={{ gridRow: '1', gridColumn: 'span 2', overflow: 'auto' }}>
         <CardHistoyProvider>
           <CardHistory />
         </CardHistoyProvider>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };

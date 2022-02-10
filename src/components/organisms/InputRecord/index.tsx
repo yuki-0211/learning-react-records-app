@@ -5,7 +5,6 @@ import { postRequest } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
-import { Grid } from '../../atoms/Grid';
 import { Pagination } from '../../atoms/Pagination';
 import { FormBase } from '../../molecules/FormBase';
 import { SelectVariants } from '../../molecules/SelectVariants';
@@ -26,38 +25,33 @@ export const InputRecord = () => {
     postRequest({ URL: '/records', data: recordDate });
   };
   return (
-    <Grid
-      container
-      alignItems="center"
-      justifyItems="center"
-      justifyContent="center"
-    >
-      <Grid item xs={12}>
+    <Box sx={{ dispay: 'grid', gridTemplateRows: 'repeat(1fr)' }}>
+      <Box>
         <TitleBox title="Enter Your Learning Title" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <FormBase
           value={ctx.title}
           onChange={ctx.titleOnChange}
           label="title"
           helper="What you have learned."
         />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <TitleBox title="Select Your Learning Type" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <SelectVariants
           value={ctx.type}
           onChange={ctx.typeOnChange}
           label={'type'}
           items={ctx.select}
         />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <TitleBox title="Enter Your Learning Times" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <TextButtonNumberForm
           count={ctx.time.count}
           onClickDecrease={ctx.timeDecrement}
@@ -66,11 +60,11 @@ export const InputRecord = () => {
           label="learning times"
           helper="What hours you have studied."
         />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <TitleBox title="Select Your Concentration" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <Box
           sx={{
             mx: 4,
@@ -84,11 +78,11 @@ export const InputRecord = () => {
             onChange={ctx.rankOnChange}
           />
         </Box>
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <TitleBox title="leaning date" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <Box
           sx={{
             mx: 4,
@@ -104,11 +98,11 @@ export const InputRecord = () => {
             renderInput={(params) => <TextField {...params} />}
           />
         </Box>
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <TitleBox title="Enter Your Comment" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box>
         <FormBase
           value={ctx.comment}
           onChange={ctx.commentOnChange}
@@ -125,7 +119,7 @@ export const InputRecord = () => {
         >
           <Button onClick={sendOnClick}>Send</Button>
         </Box>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
