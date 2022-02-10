@@ -1,8 +1,8 @@
 import { Grid } from '../components/atoms/Grid';
 import { CardHistory } from '../components/organisms/CardHistory';
 import { InputRecord } from '../components/organisms/InputRecord';
-import { InputRecordProvider } from '../contexts/Recode/inputRecord';
-import { CardHistoyProvider } from '../contexts/Recode/cardHistory';
+import { CardHistoyProvider } from '../providers/Recode/CardHistory';
+import { InputRecordProvider } from '../providers/Recode/InputRecord';
 
 export const Record = () => {
   return (

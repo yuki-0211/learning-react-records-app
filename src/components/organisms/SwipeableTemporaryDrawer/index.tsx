@@ -1,8 +1,8 @@
-import { Fragment, useContext } from 'react';
+import { Fragment } from 'react';
 import { SwipeableDrawer } from '../../atoms/SwipeableDrawer';
 import { AppBarBasic } from '../../molecules/AppBarBasic';
 import { MenuList } from '../../molecules/MenuList';
-import { swipeableTemporaryDrawerContext } from '../../../contexts/swipeableTemproraryDrawer';
+import { useSwipeableTemporaryDrawer } from '../../../hooks/useSwipeableTemporaryDrawer';
 
 interface page {
   name: string;
@@ -13,28 +13,28 @@ interface Props {
   list: page[];
 }
 export const SwipeableTemporaryDrawer: React.VFC<Props> = ({ list }) => {
-  const ctx = useContext(swipeableTemporaryDrawerContext);
+  const { state, onChange, url, onClick } = useSwipeableTemporaryDrawer();
 
   let pageName: string = 'Not Found';
   list.forEach((page) => {
-    if (page.url === ctx.url) {
+    if (page.url === url) {
       pageName = page.name;
     }
   });
 
   return (
     <Fragment key="left">
-      <AppBarBasic onClick={ctx.onChange(true)} pageName={pageName} />
+      <AppBarBasic onClick={onChange(true)} pageName={pageName} />
       <SwipeableDrawer
         anchor="left"
-        open={ctx.state}
-        onClose={ctx.onChange(false)}
-        onOpen={ctx.onChange(true)}
+        open={state}
+        onClose={onChange(false)}
+        onOpen={onChange(true)}
       >
         <MenuList
-          onClick={ctx.onChange}
-          onKeyDown={ctx.onChange}
-          onClickButton={ctx.onClick}
+          onClick={onChange}
+          onKeyDown={onChange}
+          onClickButton={onClick}
           list={list}
         />
       </SwipeableDrawer>

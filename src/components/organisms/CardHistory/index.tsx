@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { cardHistoryContext } from '../../../contexts/Recode/CardHistory';
+import { cardHistoryContext } from '../../../providers/Recode/CardHistory';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
