@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 import { useContext } from 'react';
-import { inputRecordContext } from '../../../contexts/Recode/inputRecord';
+import { inputRecordContext } from '../../../contexts/Recode/InputRecord';
 import { postRequest } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
