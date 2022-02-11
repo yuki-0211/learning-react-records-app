@@ -10,7 +10,7 @@ import { Typography } from '../../atoms/Typograpy';
 export const CardHistory: React.VFC = () => {
   const ctx = useContext(cardHistoryContext);
   return (
-    <div>
+    <Box>
       {ctx.cardData.map((data, index) => (
         <Card
           variant="outlined"
@@ -41,6 +41,6 @@ export const CardHistory: React.VFC = () => {
           </CardActions>
         </Card>
       ))}
-    </div>
+    </Box>
   );
 };

@@ -4,10 +4,10 @@ import { InputRecord } from '../components/organisms/InputRecord';
 import { CardHistoyProvider } from '../providers/Recode/CardHistory';
 import { InputRecordProvider } from '../providers/Recode/InputRecord';
 
-export const Record = () => {
+export const Record: React.VFC = () => {
   return (
-    <Box sx={{ display: 'grid', gridAutoColumns: '1fr', gridAutoRows: '80%' }}>
-      <Box sx={{ gridRow: '1', overflow: 'auto' }}>
+    <Box sx={{ display: 'grid', gridAutoColumns: '1fr', gridAutoRows: '100%' }}>
+      <Box sx={{ gridRow: '1' }}>
         <InputRecordProvider>
           <InputRecord />
         </InputRecordProvider>

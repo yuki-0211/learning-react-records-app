@@ -24,11 +24,11 @@ export const InputRecord = () => {
     postRequest({ URL: '/records', data: recordDate });
   };
   return (
-    <Box sx={{ dispay: 'grid', gridTemplateRows: 'repeat(1fr)' }}>
-      <Box>
+    <Box sx={{ display: 'grid', gridAutoRows: '1fr' }}>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Typography variant="h6" children={'Enter Your Learning Title'} />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <TextField
           value={ctx.title}
           onChange={ctx.titleOnChange}
@@ -37,10 +37,10 @@ export const InputRecord = () => {
           sx={{ width: '50%' }}
         />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Typography variant="h6" children={'Select Your Learning Type'} />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <SelectVariants
           value={ctx.type}
           onChange={ctx.typeOnChange}
@@ -48,10 +48,10 @@ export const InputRecord = () => {
           items={ctx.select}
         />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Typography variant="h6" children={'Enter Your Learning Times'} />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <TextButtonNumberForm
           count={ctx.time.count}
           onClickDecrease={ctx.timeDecrement}
@@ -61,10 +61,10 @@ export const InputRecord = () => {
           helper="What hours you have studied."
         />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Typography variant="h6" children={'Select Your Concentration'} />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <Pagination
           count={5}
           variant="text"
@@ -74,10 +74,10 @@ export const InputRecord = () => {
           sx={{ justifyContent: 'center', display: 'flex' }}
         />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Typography variant="h6" children={'leaning date'} />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <DatePicker
           label="day"
           value={ctx.date}
@@ -85,10 +85,10 @@ export const InputRecord = () => {
           renderInput={(params) => <TextField {...params} />}
         />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Typography variant="h6" children={'Enter Your Comment'} />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <TextField
           value={ctx.comment}
           onChange={ctx.commentOnChange}
@@ -97,7 +97,7 @@ export const InputRecord = () => {
           sx={{ width: '50%' }}
         />
       </Box>
-      <Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Button onClick={sendOnClick}>Send</Button>
       </Box>
     </Box>
