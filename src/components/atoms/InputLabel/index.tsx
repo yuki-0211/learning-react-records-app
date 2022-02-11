@@ -5,14 +5,6 @@ import {
 
 interface InputLabelProps extends MuiInputLabelProps {}
 
-export const InputLabel: React.VFC<InputLabelProps> = ({
-  id,
-  sx,
-  children,
-}) => {
-  return (
-    <MuiInputLabel id={id} sx={sx}>
-      {children}
-    </MuiInputLabel>
-  );
+export const InputLabel: React.VFC<InputLabelProps> = (props) => {
+  return <MuiInputLabel {...props} />;
 };

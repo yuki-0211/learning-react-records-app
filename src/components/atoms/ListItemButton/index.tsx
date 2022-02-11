@@ -5,15 +5,6 @@ import {
 
 interface ListItemButtonProps extends MuiListItemButtonProps {}
 
-export const ListItemButton: React.VFC<ListItemButtonProps> = ({
-  key,
-  onClick,
-  sx,
-  children,
-}) => {
-  return (
-    <MuiListItemButton onClick={onClick} key={key} sx={sx}>
-      {children}
-    </MuiListItemButton>
-  );
+export const ListItemButton: React.VFC<ListItemButtonProps> = (props) => {
+  return <MuiListItemButton {...props} />;
 };

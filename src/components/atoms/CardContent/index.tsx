@@ -5,6 +5,6 @@ import {
 
 interface CardContentProps extends MuiCardContentProps {}
 
-export const CardContent: React.VFC<CardContentProps> = ({ sx, children }) => {
-  return <MuiCardContent sx={sx}>{children}</MuiCardContent>;
+export const CardContent: React.VFC<CardContentProps> = (props) => {
+  return <MuiCardContent {...props} />;
 };

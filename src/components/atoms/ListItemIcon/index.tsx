@@ -5,9 +5,6 @@ import {
 
 interface ListItemIconProps extends MuiListItemIconProps {}
 
-export const ListItemIcon: React.VFC<ListItemIconProps> = ({
-  sx,
-  children,
-}) => {
-  return <MuiListItemIcon sx={sx}>{children}</MuiListItemIcon>;
+export const ListItemIcon: React.VFC<ListItemIconProps> = (props) => {
+  return <MuiListItemIcon {...props} />;
 };

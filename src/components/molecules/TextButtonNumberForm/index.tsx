@@ -29,10 +29,10 @@ export const TextButtonNumberForm: React.VFC<Props> = ({
         helperText={helper}
         variant="standard"
       />
-      <IconButton size="large" onClick={onClickIncrease}>
+      <IconButton size="large" onClick={onClickIncrease} color="primary">
         <Icon>add_circle</Icon>
       </IconButton>
-      <IconButton size="large" onClick={onClickDecrease}>
+      <IconButton size="large" onClick={onClickDecrease} color="primary">
         <Icon>do_not_disturb_on</Icon>
       </IconButton>
     </div>

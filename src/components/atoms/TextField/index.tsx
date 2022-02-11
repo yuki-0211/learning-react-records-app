@@ -15,6 +15,6 @@ Apply all variant props to support datepicker.
 
 export const TextField: React.VFC<
   StandardTextFieldProps | FilledTextFieldProps | OutlinedTextFieldProps
-> = (props) => {
-  return <MuiTextField variant="standard" {...props} />;
+> = (props, { variant = 'standard' }) => {
+  return <MuiTextField variant={variant} {...props} />;
 };
