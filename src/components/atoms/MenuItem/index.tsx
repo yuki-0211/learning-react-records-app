@@ -5,10 +5,6 @@ import {
 
 interface MenuItemProps extends MuiMenuItemProps {}
 
-export const MenuItem: React.VFC<MenuItemProps> = ({ value, sx, children }) => {
-  return (
-    <MuiMenuItem value={value} sx={sx}>
-      {children}
-    </MuiMenuItem>
-  );
+export const MenuItem: React.VFC<MenuItemProps> = (props) => {
+  return <MuiMenuItem {...props} />;
 };

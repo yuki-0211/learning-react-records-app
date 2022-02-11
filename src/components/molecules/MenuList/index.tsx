@@ -3,9 +3,6 @@ import { List } from '../../atoms/List';
 import { ListItemButton } from '../../atoms/ListItemButton';
 import { ListItemIcon } from '../../atoms/ListItemIcon';
 import { ListItemText } from '../../atoms/ListItemText/ListItemText';
-import MenuIcon from '@mui/icons-material/Menu';
-import { SvgIconTypeMap } from '@mui/material';
-import { OverridableComponent } from '@mui/material/OverridableComponent';
 
 interface Props {
   onClick: (
@@ -34,9 +31,10 @@ export const MenuList: React.VFC<Props> = ({
     role="presentation"
     onClick={onClick(false)}
     onKeyDown={onKeyDown(false)}
+    sx={{ width: '200px' }}
   >
     <List>
-      {list.map((text, index) => (
+      {list.map((text) => (
         <ListItemButton key={text.name} onClick={onClickButton(text.url)}>
           <ListItemIcon>{text.icon}</ListItemIcon>
           <ListItemText primary={text.name} />

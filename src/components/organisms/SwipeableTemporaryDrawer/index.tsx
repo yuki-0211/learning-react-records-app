@@ -16,7 +16,7 @@ export const SwipeableTemporaryDrawer: React.VFC<Props> = ({ list }) => {
   const { state, onChange, url, onClick } = useSwipeableTemporaryDrawer();
 
   let pageName: string = 'Not Found';
-  list.forEach((page, index) => {
+  list.forEach((page) => {
     if (page.url === url) {
       pageName = page.name;
     }

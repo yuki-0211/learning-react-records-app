@@ -5,6 +5,6 @@ import {
 
 interface ToolbarProps extends MuiToolbarProps {}
 
-export const Toolbar: React.VFC<ToolbarProps> = ({ sx, children }) => {
-  return <MuiToolbar sx={sx}>{children}</MuiToolbar>;
+export const Toolbar: React.VFC<ToolbarProps> = (props) => {
+  return <MuiToolbar {...props} />;
 };

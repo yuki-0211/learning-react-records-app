@@ -1,152 +1,105 @@
-import { TextField } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useDatePicker } from '../../../hooks/useDatePicker';
-import { usePagination } from '../../../hooks/usePagination';
-import { useSelect } from '../../../hooks/useSelect';
-import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
-import { useTextForm } from '../../../hooks/useTextField';
-import { getRequest, postRequest } from '../../../lib/axios';
+import { useContext } from 'react';
+import { inputRecordContext } from '../../../providers/Recode/InputRecord';
+import { postRequest } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
-import { Grid } from '../../atoms/Grid';
 import { Pagination } from '../../atoms/Pagination';
-import { FormBase } from '../../molecules/FormBase';
 import { SelectVariants } from '../../molecules/SelectVariants';
 import { TextButtonNumberForm } from '../../molecules/TextButtonNumberForm';
-import { TitleBox } from '../../molecules/TitleBox';
-import { demoData } from './demoData';
+import { Typography } from '../../atoms/Typograpy';
+import { TextField } from '../../atoms/TextField';
 
 export const InputRecord = () => {
-  const { state: title, onChange: titleOnChange } = useTextForm();
-  const {
-    state: type,
-    onChange: typeOnChange,
-    select,
-  } = useSelect(demoData(), '/types');
-  const { state: rank, onChange: rankOnChange } = usePagination();
-  const {
-    state: time,
-    decrement: timeDecrement,
-    increment: timeIncrement,
-    onChange: timeOnChange,
-  } = useTextButtonNumberForm();
-  const { state: comment, onChange: commentOnChange } = useTextForm();
-  const { state: date, onChange: dateOnChange } = useDatePicker();
-
+  const ctx = useContext(inputRecordContext);
   const sendOnClick = () => {
     const recordDate = {
-      title: title,
-      type: type,
-      rank: rank,
-      time: time.count,
-      date: date,
-      comment: comment,
+      title: ctx.title,
+      type: ctx.type,
+      rank: ctx.rank,
+      time: ctx.time.count,
+      date: ctx.date,
+      comment: ctx.comment,
     };
     postRequest({ URL: '/records', data: recordDate });
   };
-
   return (
-    <Grid
-      container
-      alignItems="center"
-      justifyItems="center"
-      justifyContent="center"
-    >
-      <Grid item xs={12}>
-        <TitleBox title="Enter Your Learning Title" />
-      </Grid>
-      <Grid item xs={12}>
-        <FormBase
-          value={title}
-          onChange={titleOnChange}
+    <Box sx={{ display: 'grid', gridAutoRows: '1fr' }}>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <Typography variant="h6" children={'Enter Your Learning Title'} />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
+        <TextField
+          value={ctx.title}
+          onChange={ctx.titleOnChange}
           label="title"
-          helper="What you have learned."
+          helperText="What you have learned."
+          sx={{ width: '50%' }}
         />
-      </Grid>
-      <Grid item xs={12}>
-        <TitleBox title="Select Your Learning Type" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <Typography variant="h6" children={'Select Your Learning Type'} />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <SelectVariants
-          value={type}
-          onChange={typeOnChange}
+          value={ctx.type}
+          onChange={ctx.typeOnChange}
           label={'type'}
-          items={select}
+          items={ctx.select}
         />
-      </Grid>
-      <Grid item xs={12}>
-        <TitleBox title="Enter Your Learning Times" />
-      </Grid>
-      <Grid item xs={12}>
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <Typography variant="h6" children={'Enter Your Learning Times'} />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <TextButtonNumberForm
-          count={time.count}
-          onClickDecrease={timeDecrement}
-          onClickIncrease={timeIncrement}
-          onChange={timeOnChange}
+          count={ctx.time.count}
+          onClickDecrease={ctx.timeDecrement}
+          onClickIncrease={ctx.timeIncrement}
+          onChange={ctx.timeOnChange}
           label="learning times"
           helper="What hours you have studied."
         />
-      </Grid>
-      <Grid item xs={12}>
-        <TitleBox title="Select Your Concentration" />
-      </Grid>
-      <Grid item xs={12}>
-        <Box
-          sx={{
-            mx: 4,
-          }}
-        >
-          <Pagination
-            count={5}
-            variant="text"
-            color="primary"
-            defaultPage={3}
-            onChange={rankOnChange}
-          />
-        </Box>
-      </Grid>
-      <Grid item xs={12}>
-        <TitleBox title="leaning date" />
-      </Grid>
-      <Grid item xs={12}>
-        <Box
-          sx={{
-            mx: 4,
-            p: '2px 8px',
-            display: 'flex',
-            width: 270,
-          }}
-        >
-          <DatePicker
-            label="day"
-            value={date}
-            onChange={dateOnChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </Box>
-      </Grid>
-      <Grid item xs={12}>
-        <TitleBox title="Enter Your Comment" />
-      </Grid>
-      <Grid item xs={12}>
-        <FormBase
-          value={comment}
-          onChange={commentOnChange}
-          label="comment"
-          helper="add your comment"
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <Typography variant="h6" children={'Select Your Concentration'} />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
+        <Pagination
+          count={5}
+          variant="text"
+          color="primary"
+          defaultPage={3}
+          onChange={ctx.rankOnChange}
+          sx={{ justifyContent: 'center', display: 'flex' }}
         />
-        <Box
-          sx={{
-            mx: 4,
-            p: '2px 8px',
-            display: 'flex',
-            width: '10%',
-          }}
-        >
-          <Button onClick={sendOnClick}>Send</Button>
-        </Box>
-      </Grid>
-    </Grid>
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <Typography variant="h6" children={'Select Leaning Date'} />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
+        <DatePicker
+          label="day"
+          value={ctx.date}
+          onChange={ctx.dateOnChange}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <Typography variant="h6" children={'Enter Your Comment'} />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <TextField
+          value={ctx.comment}
+          onChange={ctx.commentOnChange}
+          label="comment"
+          helperText="add your comment"
+          sx={{ width: '50%' }}
+        />
+      </Box>
+      <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
+        <Button onClick={sendOnClick}>Send</Button>
+      </Box>
+    </Box>
   );
 };

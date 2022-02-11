@@ -5,6 +5,6 @@ import {
 
 interface ListItemTextProps extends MuiListItemTextProps {}
 
-export const ListItemText: React.VFC<ListItemTextProps> = ({ primary, sx }) => {
-  return <MuiListItemText primary={primary} sx={sx} />;
+export const ListItemText: React.VFC<ListItemTextProps> = (props) => {
+  return <MuiListItemText {...props} />;
 };

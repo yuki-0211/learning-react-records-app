@@ -5,6 +5,6 @@ import {
 
 interface CardActionsProps extends MuiCardActionsProps {}
 
-export const CardActions: React.VFC<CardActionsProps> = ({ sx, children }) => {
-  return <MuiCardActions sx={sx}>{children}</MuiCardActions>;
+export const CardActions: React.VFC<CardActionsProps> = (props) => {
+  return <MuiCardActions {...props} />;
 };

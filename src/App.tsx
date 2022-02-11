@@ -18,7 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Record />} />
         <Route path="/history" element={<History />} />
-        <Route path="/contact" element={<Setting />} />
+        <Route path="/setting" element={<Setting />} />
       </Routes>
     </div>
   );
