@@ -1,11 +1,9 @@
 import { SelectChangeEvent } from '@mui/material';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { getRequest } from '../lib/axios';
+import { typeSelectVariants } from '../types/selectVariants';
 
-export const useSelect = (
-  initData: { id: string; value: string }[],
-  URL: string
-) => {
+export const useSelect = (initData: typeSelectVariants[], URL: string) => {
   const [state, setState] = useState<string>('');
   const onChange = useCallback(
     (event: SelectChangeEvent<string>, child: ReactNode) =>

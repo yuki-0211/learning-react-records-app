@@ -6,7 +6,7 @@ import { InputRecordProvider } from '../providers/Recode/InputRecord';
 
 export const Record: React.VFC = () => {
   return (
-    <Box sx={{ display: 'grid', gridAutoColumns: '1fr', gridAutoRows: '100%' }}>
+    <Box sx={{ display: 'grid', gridAutoColumns: '1fr', height: '800px' }}>
       <Box sx={{ gridRow: '1' }}>
         <InputRecordProvider>
           <InputRecord />

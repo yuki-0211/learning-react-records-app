@@ -1,11 +1,12 @@
 export const initCardHistory = () => {
   return [
     {
+      id: '0',
       title: 'test',
       type: 'test',
       time: 0,
       rank: 1,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
   ];
