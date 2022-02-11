@@ -13,7 +13,7 @@ interface Props {
 export const AppBarBasic: React.VFC<Props> = ({ pageName, onClick }) => {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{ boxShadow: 0 }}>
         <Toolbar>
           <IconButton
             size="large"
