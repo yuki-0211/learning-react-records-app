@@ -37,6 +37,7 @@ export const CardHistory: React.VFC = () => {
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions>
+            <Button>edit</Button>
             <Button>delete</Button>
           </CardActions>
         </Card>

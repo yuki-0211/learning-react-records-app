@@ -5,7 +5,7 @@ import { usePagination } from '../../hooks/usePagination';
 import { useSelect } from '../../hooks/useSelect';
 import { useTextButtonNumberForm } from '../../hooks/useTextButtonNumberForm';
 import { useTextForm } from '../../hooks/useTextField';
-import { initInputRecord } from '../../init/initInputRecord';
+import { initSelectVariants } from '../../init/selectVariants';
 
 interface typeContext {
   title: string;
@@ -38,7 +38,7 @@ export const InputRecordProvider = (props: React.PropsWithChildren<{}>) => {
     state: type,
     onChange: typeOnChange,
     select,
-  } = useSelect(initInputRecord(), '/types');
+  } = useSelect(initSelectVariants(), '/types');
   const { state: rank, onChange: rankOnChange } = usePagination();
   const {
     state: time,
