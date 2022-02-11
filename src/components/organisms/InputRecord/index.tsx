@@ -75,7 +75,7 @@ export const InputRecord = () => {
         />
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
-        <Typography variant="h6" children={'leaning date'} />
+        <Typography variant="h6" children={'Select Leaning Date'} />
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <DatePicker
