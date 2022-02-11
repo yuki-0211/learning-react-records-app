@@ -5,15 +5,6 @@ import {
 
 interface FormControlProps extends MuiFormControlProps {}
 
-export const FormControl: React.VFC<FormControlProps> = ({
-  variant,
-  fullWidth,
-  sx,
-  children,
-}) => {
-  return (
-    <MuiFormControl fullWidth={fullWidth} variant={variant} sx={sx}>
-      {children}
-    </MuiFormControl>
-  );
+export const FormControl: React.VFC<FormControlProps> = (props) => {
+  return <MuiFormControl {...props} />;
 };

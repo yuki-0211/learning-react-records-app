@@ -5,10 +5,6 @@ import {
 
 interface AppBarProps extends MuiAppBarProps {}
 
-export const AppBar: React.VFC<AppBarProps> = ({ position, sx, children }) => {
-  return (
-    <MuiAppBar position={position} sx={sx}>
-      {children}
-    </MuiAppBar>
-  );
+export const AppBar: React.VFC<AppBarProps> = (props) => {
+  return <MuiAppBar {...props} />;
 };
