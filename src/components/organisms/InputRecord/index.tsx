@@ -1,4 +1,3 @@
-import { TextField } from '@mui/material';
 import { useContext } from 'react';
 import { inputRecordContext } from '../../../providers/Recode/InputRecord';
 import { postRequest } from '../../../lib/axios';
@@ -6,10 +5,10 @@ import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
 import { Pagination } from '../../atoms/Pagination';
-import { FormBase } from '../../molecules/FormBase';
 import { SelectVariants } from '../../molecules/SelectVariants';
 import { TextButtonNumberForm } from '../../molecules/TextButtonNumberForm';
-import { TitleBox } from '../../molecules/TitleBox';
+import { TextField } from '../../atoms/TextField';
+import { Typography } from '../../atoms/Typograpy';
 
 export const InputRecord = () => {
   const ctx = useContext(inputRecordContext);
@@ -27,18 +26,19 @@ export const InputRecord = () => {
   return (
     <Box sx={{ dispay: 'grid', gridTemplateRows: 'repeat(1fr)' }}>
       <Box>
-        <TitleBox title="Enter Your Learning Title" />
+        <Typography variant="h6" children={'Enter Your Learning Title'} />
       </Box>
       <Box>
-        <FormBase
+        <TextField
           value={ctx.title}
           onChange={ctx.titleOnChange}
           label="title"
-          helper="What you have learned."
+          helperText="What you have learned."
+          sx={{ width: '50%' }}
         />
       </Box>
       <Box>
-        <TitleBox title="Select Your Learning Type" />
+        <Typography variant="h6" children={'Select Your Learning Type'} />
       </Box>
       <Box>
         <SelectVariants
@@ -49,7 +49,7 @@ export const InputRecord = () => {
         />
       </Box>
       <Box>
-        <TitleBox title="Enter Your Learning Times" />
+        <Typography variant="h6" children={'Enter Your Learning Times'} />
       </Box>
       <Box>
         <TextButtonNumberForm
@@ -62,63 +62,42 @@ export const InputRecord = () => {
         />
       </Box>
       <Box>
-        <TitleBox title="Select Your Concentration" />
+        <Typography variant="h6" children={'Select Your Concentration'} />
       </Box>
       <Box>
-        <Box
-          sx={{
-            mx: 4,
-          }}
-        >
-          <Pagination
-            count={5}
-            variant="text"
-            color="primary"
-            defaultPage={3}
-            onChange={ctx.rankOnChange}
-          />
-        </Box>
+        <Pagination
+          count={5}
+          variant="text"
+          color="primary"
+          defaultPage={3}
+          onChange={ctx.rankOnChange}
+          sx={{ justifyContent: 'center', display: 'flex' }}
+        />
       </Box>
       <Box>
-        <TitleBox title="leaning date" />
+        <Typography variant="h6" children={'leaning date'} />
       </Box>
       <Box>
-        <Box
-          sx={{
-            mx: 4,
-            p: '2px 8px',
-            display: 'flex',
-            width: 270,
-          }}
-        >
-          <DatePicker
-            label="day"
-            value={ctx.date}
-            onChange={ctx.dateOnChange}
-            renderInput={(params) => <TextField {...params} />}
-          />
-        </Box>
+        <DatePicker
+          label="day"
+          value={ctx.date}
+          onChange={ctx.dateOnChange}
+          renderInput={(params) => <TextField {...params} />}
+        />
       </Box>
       <Box>
-        <TitleBox title="Enter Your Comment" />
+        <Typography variant="h6" children={'Enter Your Comment'} />
       </Box>
       <Box>
-        <FormBase
+        <TextField
           value={ctx.comment}
           onChange={ctx.commentOnChange}
           label="comment"
-          helper="add your comment"
+          helperText="add your comment"
         />
-        <Box
-          sx={{
-            mx: 4,
-            p: '2px 8px',
-            display: 'flex',
-            width: '10%',
-          }}
-        >
-          <Button onClick={sendOnClick}>Send</Button>
-        </Box>
+      </Box>
+      <Box>
+        <Button onClick={sendOnClick}>Send</Button>
       </Box>
     </Box>
   );

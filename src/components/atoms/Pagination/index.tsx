@@ -3,12 +3,15 @@ import {
   PaginationProps as MuiPaginationProps,
 } from '@mui/material';
 
-export const Pagination: React.VFC<MuiPaginationProps> = ({
+interface PaginationProps extends MuiPaginationProps {}
+
+export const Pagination: React.VFC<PaginationProps> = ({
   count,
   variant,
   color,
   defaultPage,
   onChange,
+  sx,
 }) => {
   return (
     <MuiPagination
@@ -17,6 +20,7 @@ export const Pagination: React.VFC<MuiPaginationProps> = ({
       color={color}
       defaultPage={defaultPage}
       onChange={onChange}
+      sx={sx}
     />
   );
 };

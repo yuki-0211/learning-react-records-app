@@ -1,30 +1,47 @@
 import {
   TextField as MuiTextField,
-  StandardTextFieldProps as MuiTextFieldProps,
+  StandardTextFieldProps as MuiStandardTextFieldProps,
+  FilledTextFieldProps as MuiFilledTextFieldProps,
+  OutlinedTextFieldProps as MuiOutlinedTextFieldProps,
 } from '@mui/material';
-import { forwardRef, Ref } from 'react';
 
-interface TextFieldProps extends MuiTextFieldProps {}
+interface StandardTextFieldProps extends MuiStandardTextFieldProps {}
+interface FilledTextFieldProps extends MuiFilledTextFieldProps {}
+interface OutlinedTextFieldProps extends MuiOutlinedTextFieldProps {}
 
-export const TextField = forwardRef<
-  HTMLInputElement | number | null,
-  TextFieldProps
->((props: TextFieldProps, ref: Ref<HTMLInputElement | number | null>) => {
+/*
+Apply all variant props to support datepicker.
+*/
+
+export const TextField: React.VFC<
+  StandardTextFieldProps | FilledTextFieldProps | OutlinedTextFieldProps
+> = ({
+  placeholder,
+  label,
+  helperText,
+  onChange,
+  style,
+  inputProps,
+  value,
+  size,
+  autoFocus,
+  fullWidth,
+  sx,
+}) => {
   return (
     <MuiTextField
-      placeholder={props.placeholder}
-      inputRef={ref}
-      label={props.label}
-      helperText={props.helperText}
-      onChange={(e) => props.onChange?.(e)}
-      style={props.style}
-      inputProps={props.inputProps}
-      value={props.value}
-      size={props.size}
-      autoFocus={props.autoFocus}
-      fullWidth={props.fullWidth}
+      placeholder={placeholder}
+      label={label}
+      helperText={helperText}
+      onChange={(e) => onChange?.(e)}
+      style={style}
+      inputProps={inputProps}
+      value={value}
+      size={size}
+      autoFocus={autoFocus}
+      fullWidth={fullWidth}
       variant="standard"
-      sx={props.sx}
+      sx={sx}
     />
   );
-});
+};
