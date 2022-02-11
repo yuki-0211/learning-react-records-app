@@ -1,16 +1,10 @@
 import React, { createContext } from 'react';
-import { useCardHistory } from '../../hooks/useCardHistory';
-import { initCardHistory } from '../../init/initCardHistroy';
+import { useCardHistory } from '../hooks/useCardHistory';
+import { initCardHistory } from '../init/initCardHistroy';
+import { typeCardHistory } from '../types/cardHistory';
 
 interface typeContext {
-  cardData: {
-    title: string;
-    type: string;
-    time: number;
-    rank: number;
-    date: number;
-    comment: string;
-  }[];
+  cardData: typeCardHistory[];
 }
 
 export const cardHistoryContext = createContext({} as typeContext);

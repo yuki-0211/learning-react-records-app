@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import { inputRecordContext } from '../../../providers/Recode/InputRecord';
 import { postRequest } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
@@ -9,20 +7,57 @@ import { SelectVariants } from '../../molecules/SelectVariants';
 import { TextButtonNumberForm } from '../../molecules/TextButtonNumberForm';
 import { Typography } from '../../atoms/Typograpy';
 import { TextField } from '../../atoms/TextField';
+import { useTextForm } from '../../../hooks/useTextField';
+import { usePagination } from '../../../hooks/usePagination';
+import { initSelectVariants } from '../../../init/selectVariants';
+import { useSelect } from '../../../hooks/useSelect';
+import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
+import { useDatePicker } from '../../../hooks/useDatePicker';
 
-export const InputRecord = () => {
-  const ctx = useContext(inputRecordContext);
+export interface InputRecordProps {
+  defaultText?: string;
+  defaultPagination?: number;
+  defaultTextButtonNumber?: { count: string };
+  defaultComment?: string;
+  defaultDate?: Date;
+}
+export const InputRecord: React.VFC<InputRecordProps> = ({
+  defaultText,
+  defaultPagination,
+  defaultTextButtonNumber,
+  defaultComment,
+  defaultDate,
+}) => {
+  const { state: title, onChange: titleOnChange } = useTextForm(defaultText);
+  const {
+    state: type,
+    onChange: typeOnChange,
+    select,
+  } = useSelect(initSelectVariants(), '/types');
+  const { state: rank, onChange: rankOnChange } =
+    usePagination(defaultPagination);
+  const {
+    state: time,
+    decrement: timeDecrement,
+    increment: timeIncrement,
+    onChange: timeOnChange,
+  } = useTextButtonNumberForm(defaultTextButtonNumber);
+  const { state: comment, onChange: commentOnChange } =
+    useTextForm(defaultComment);
+  const { state: date, onChange: dateOnChange } = useDatePicker(defaultDate);
+
   const sendOnClick = () => {
     const recordDate = {
-      title: ctx.title,
-      type: ctx.type,
-      rank: ctx.rank,
-      time: ctx.time.count,
-      date: ctx.date,
-      comment: ctx.comment,
+      title: title,
+      type: type,
+      rank: rank,
+      time: time.count,
+      date: date,
+      comment: comment,
     };
     postRequest({ URL: '/records', data: recordDate });
   };
+
   return (
     <Box sx={{ display: 'grid', gridAutoRows: '1fr' }}>
       <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
@@ -30,8 +65,8 @@ export const InputRecord = () => {
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <TextField
-          value={ctx.title}
-          onChange={ctx.titleOnChange}
+          value={title}
+          onChange={titleOnChange}
           label="title"
           helperText="What you have learned."
           sx={{ width: '50%' }}
@@ -42,10 +77,10 @@ export const InputRecord = () => {
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <SelectVariants
-          value={ctx.type}
-          onChange={ctx.typeOnChange}
+          value={type}
+          onChange={typeOnChange}
           label={'type'}
-          items={ctx.select}
+          items={select}
         />
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
@@ -53,10 +88,10 @@ export const InputRecord = () => {
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <TextButtonNumberForm
-          count={ctx.time.count}
-          onClickDecrease={ctx.timeDecrement}
-          onClickIncrease={ctx.timeIncrement}
-          onChange={ctx.timeOnChange}
+          count={time.count}
+          onClickDecrease={timeDecrement}
+          onClickIncrease={timeIncrement}
+          onChange={timeOnChange}
           label="learning times"
           helper="What hours you have studied."
         />
@@ -70,7 +105,7 @@ export const InputRecord = () => {
           variant="text"
           color="primary"
           defaultPage={3}
-          onChange={ctx.rankOnChange}
+          onChange={rankOnChange}
           sx={{ justifyContent: 'center', display: 'flex' }}
         />
       </Box>
@@ -80,8 +115,8 @@ export const InputRecord = () => {
       <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
         <DatePicker
           label="day"
-          value={ctx.date}
-          onChange={ctx.dateOnChange}
+          value={date}
+          onChange={dateOnChange}
           renderInput={(params) => <TextField {...params} />}
         />
       </Box>
@@ -90,8 +125,8 @@ export const InputRecord = () => {
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <TextField
-          value={ctx.comment}
-          onChange={ctx.commentOnChange}
+          value={comment}
+          onChange={commentOnChange}
           label="comment"
           helperText="add your comment"
           sx={{ width: '50%' }}

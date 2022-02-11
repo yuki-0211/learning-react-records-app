@@ -1,8 +1,7 @@
 import { ChangeEvent, useCallback, useReducer } from 'react';
 import { reducerTextButtonNumberForm } from '../reducers/reducerTextButtonNumberForm';
 
-const initialInput = { count: '0' };
-export const useTextButtonNumberForm = () => {
+export const useTextButtonNumberForm = (initialInput = { count: '0' }) => {
   const [state, dispatch] = useReducer(
     reducerTextButtonNumberForm,
     initialInput

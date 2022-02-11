@@ -1,5 +1,7 @@
+import { Satellite } from '@mui/icons-material';
 import { useContext } from 'react';
-import { cardHistoryContext } from '../../../providers/Recode/CardHistory';
+import { useDialog } from '../../../hooks/useDialog';
+import { cardHistoryContext } from '../../../providers/CardHistory';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
@@ -7,9 +9,11 @@ import { CardActions } from '../../atoms/CardActions';
 import { CardContent } from '../../atoms/CardContent';
 import { Rating } from '../../atoms/Rating';
 import { Typography } from '../../atoms/Typograpy';
+import { DialogInputRecord } from '../DialogInputRecord';
 
 export const CardHistory: React.VFC = () => {
   const ctx = useContext(cardHistoryContext);
+  const { state, open, close } = useDialog();
   return (
     <Box>
       {ctx.cardData.map((data, index) => (
@@ -18,6 +22,15 @@ export const CardHistory: React.VFC = () => {
           sx={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}
           key={index}
         >
+          <DialogInputRecord
+            state={state.isOpen}
+            close={close}
+            defaultText={data.title}
+            defaultPagination={data.rank}
+            defaultTextButtonNumber={{ count: data.time.toString() }}
+            defaultDate={new Date(data.date)}
+            defaultComment={data.comment}
+          />
           <CardContent sx={{ gridRow: '1', gridColumn: 'span 3' }}>
             <Typography variant="h4" gutterBottom>
               {data.title}
@@ -42,7 +55,7 @@ export const CardHistory: React.VFC = () => {
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions sx={{ gridRow: '3', gridColumn: 'span 1' }}>
-            <Button>edit</Button>
+            <Button onClick={open}>edit</Button>
             <Button>delete</Button>
           </CardActions>
         </Card>
