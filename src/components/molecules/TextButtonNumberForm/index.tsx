@@ -27,6 +27,7 @@ export const TextButtonNumberForm: React.VFC<Props> = ({
         inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
         label={label}
         helperText={helper}
+        variant="standard"
       />
       <IconButton size="large" onClick={onClickIncrease}>
         <Icon>add_circle</Icon>

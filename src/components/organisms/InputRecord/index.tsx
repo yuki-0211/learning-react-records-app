@@ -7,8 +7,8 @@ import { DatePicker } from '../../atoms/DatePicker';
 import { Pagination } from '../../atoms/Pagination';
 import { SelectVariants } from '../../molecules/SelectVariants';
 import { TextButtonNumberForm } from '../../molecules/TextButtonNumberForm';
-import { TextField } from '../../atoms/TextField';
 import { Typography } from '../../atoms/Typograpy';
+import { TextField } from '../../atoms/TextField';
 
 export const InputRecord = () => {
   const ctx = useContext(inputRecordContext);
@@ -94,6 +94,7 @@ export const InputRecord = () => {
           onChange={ctx.commentOnChange}
           label="comment"
           helperText="add your comment"
+          sx={{ width: '50%' }}
         />
       </Box>
       <Box>
