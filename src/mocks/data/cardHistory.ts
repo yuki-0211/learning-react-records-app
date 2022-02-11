@@ -8,7 +8,7 @@ export const dataCardHistory = () => {
       type: 'English',
       time: 1.5,
       rank: 5,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -17,16 +17,16 @@ export const dataCardHistory = () => {
       type: 'English',
       time: 0.5,
       rank: 3,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
       id: '2',
-      title: 'PMP',
+      title: 'PMP 10Page',
       type: 'Management',
       time: 1.5,
       rank: 3,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -35,7 +35,7 @@ export const dataCardHistory = () => {
       type: 'English',
       time: 1.5,
       rank: 3,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -44,7 +44,7 @@ export const dataCardHistory = () => {
       type: 'Cook',
       time: 0.5,
       rank: 5,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -53,7 +53,7 @@ export const dataCardHistory = () => {
       type: 'Cook',
       time: 0.5,
       rank: 5,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -62,7 +62,7 @@ export const dataCardHistory = () => {
       type: 'Cook',
       time: 0.5,
       rank: 5,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -71,7 +71,7 @@ export const dataCardHistory = () => {
       type: 'Management',
       time: 1.5,
       rank: 3,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -80,7 +80,7 @@ export const dataCardHistory = () => {
       type: 'Cook',
       time: 0.5,
       rank: 5,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
     {
@@ -89,7 +89,7 @@ export const dataCardHistory = () => {
       type: 'Cook',
       time: 0.5,
       rank: 5,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
   ];

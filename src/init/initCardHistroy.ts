@@ -6,7 +6,7 @@ export const initCardHistory = () => {
       type: 'test',
       time: 0,
       rank: 1,
-      date: Date.now(),
+      date: new Date().toISOString(),
       comment: 'test data',
     },
   ];

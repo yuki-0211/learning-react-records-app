@@ -4,6 +4,6 @@ export interface typeCardHistory {
   type: string;
   time: number;
   rank: number;
-  date: number;
+  date: string;
   comment: string;
 }
