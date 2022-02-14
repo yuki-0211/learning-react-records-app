@@ -22,15 +22,6 @@ export const CardHistory: React.VFC = () => {
           sx={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)' }}
           key={index}
         >
-          <DialogInputRecord
-            state={state.isOpen}
-            close={close}
-            defaultText={data.title}
-            defaultPagination={data.rank}
-            defaultTextButtonNumber={{ count: data.time.toString() }}
-            defaultDate={new Date(data.date)}
-            defaultComment={data.comment}
-          />
           <CardContent sx={{ gridRow: '1', gridColumn: 'span 3' }}>
             <Typography variant="h4" gutterBottom>
               {data.title}
