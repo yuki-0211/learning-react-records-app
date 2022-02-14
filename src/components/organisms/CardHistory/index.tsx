@@ -13,7 +13,6 @@ import { DialogInputRecord } from '../DialogInputRecord';
 
 export const CardHistory: React.VFC = () => {
   const ctx = useContext(cardHistoryContext);
-  const { state, open, close } = useDialog();
   return (
     <Box>
       {ctx.cardData.map((data, index) => (
@@ -46,7 +45,7 @@ export const CardHistory: React.VFC = () => {
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions sx={{ gridRow: '3', gridColumn: 'span 1' }}>
-            <Button onClick={open}>edit</Button>
+            <Button>edit</Button>
             <Button>delete</Button>
           </CardActions>
         </Card>
