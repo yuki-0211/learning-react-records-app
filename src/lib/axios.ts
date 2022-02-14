@@ -1,5 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import React from 'react';
+import config from '../config';
+
+const API = axios.create({
+  baseURL: config.baseURL,
+});
 
 interface getProps {
   URL: string;
@@ -20,8 +25,7 @@ interface putProps {
 }
 
 export const getRequest = async (props: getProps) => {
-  await axios
-    .get(props.URL, props?.config)
+  await API.get(props.URL, props?.config)
     .then((results) => {
       props.setter(results.data);
     })
@@ -41,8 +45,7 @@ export const getRequest = async (props: getProps) => {
 };
 
 export const postRequest = async (props: postProps) => {
-  await axios
-    .post(props.URL, props.data, props?.config)
+  await API.post(props.URL, props.data, props?.config)
     .then((results) => {
       console.log(results);
     })
@@ -62,8 +65,7 @@ export const postRequest = async (props: postProps) => {
 };
 
 export const putRequest = async (props: putProps) => {
-  await axios
-    .post(props.URL, props.data, props?.config)
+  await API.post(props.URL, props.data, props?.config)
     .then((results) => {
       console.log(results);
     })
