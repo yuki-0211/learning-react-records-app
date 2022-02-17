@@ -20,6 +20,14 @@ export const handlers = [
   }),
 
   rest.post('/records', (req, res, ctx) => {
+    return res(ctx.status(201));
+  }),
+
+  rest.put('/records', (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+
+  rest.delete('/records', (req, res, ctx) => {
     return res(ctx.status(200));
   }),
 ];

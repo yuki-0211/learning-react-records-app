@@ -1,5 +1,10 @@
 import axios, { AxiosRequestConfig } from 'axios';
 import React from 'react';
+import config from '../config';
+
+const API = axios.create({
+  baseURL: config.baseURL,
+});
 
 interface getProps {
   URL: string;
@@ -7,21 +12,25 @@ interface getProps {
   setter: React.Dispatch<React.SetStateAction<any>>;
 }
 
-interface postProps {
+export interface postProps {
   URL: string;
   data: object;
   config?: AxiosRequestConfig<any>;
 }
 
-interface putProps {
+export interface putProps {
   URL: string;
   data: object;
+  config?: AxiosRequestConfig<any>;
+}
+
+interface deleteProps {
+  URL: string;
   config?: AxiosRequestConfig<any>;
 }
 
 export const getRequest = async (props: getProps) => {
-  await axios
-    .get(props.URL, props?.config)
+  await API.get(props.URL, props?.config)
     .then((results) => {
       props.setter(results.data);
     })
@@ -36,13 +45,11 @@ export const getRequest = async (props: getProps) => {
         console.log('Error', error.message);
       }
       console.log(error.config);
-    })
-    .finally(() => {});
+    });
 };
 
 export const postRequest = async (props: postProps) => {
-  await axios
-    .post(props.URL, props.data, props?.config)
+  await API.post(props.URL, props.data, props?.config)
     .then((results) => {
       console.log(results);
     })
@@ -57,13 +64,11 @@ export const postRequest = async (props: postProps) => {
         console.log('Error', error.message);
       }
       console.log(error.config);
-    })
-    .finally(() => {});
+    });
 };
 
 export const putRequest = async (props: putProps) => {
-  await axios
-    .post(props.URL, props.data, props?.config)
+  await API.put(props.URL, props.data, props?.config)
     .then((results) => {
       console.log(results);
     })
@@ -78,6 +83,24 @@ export const putRequest = async (props: putProps) => {
         console.log('Error', error.message);
       }
       console.log(error.config);
+    });
+};
+
+export const deleteRequest = async (props: deleteProps) => {
+  await API.delete(props.URL, props?.config)
+    .then((results) => {
+      console.log(results);
     })
-    .finally(() => {});
+    .catch((error) => {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
 };

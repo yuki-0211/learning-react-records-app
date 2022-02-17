@@ -1,15 +1,17 @@
 import { useContext } from 'react';
-import { cardHistoryContext } from '../../../providers/Recode/CardHistory';
+import { cardHistoryContext } from '../../../providers/CardHistory';
 import { Box } from '../../atoms/Box';
-import { Button } from '../../atoms/Button';
 import { Card } from '../../atoms/Card';
 import { CardActions } from '../../atoms/CardActions';
 import { CardContent } from '../../atoms/CardContent';
 import { Rating } from '../../atoms/Rating';
 import { Typography } from '../../atoms/Typograpy';
+import { DeleteButton } from '../DeleteButton';
+import { EditButton } from '../EditButton';
 
 export const CardHistory: React.VFC = () => {
   const ctx = useContext(cardHistoryContext);
+  const URL = '/records';
   return (
     <Box>
       {ctx.cardData.map((data, index) => (
@@ -42,8 +44,12 @@ export const CardHistory: React.VFC = () => {
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions sx={{ gridRow: '3', gridColumn: 'span 1' }}>
-            <Button>edit</Button>
-            <Button>delete</Button>
+            <EditButton data={data} URL={URL}>
+              edit
+            </EditButton>
+            <DeleteButton data={data} URL={URL}>
+              delete
+            </DeleteButton>
           </CardActions>
         </Card>
       ))}
