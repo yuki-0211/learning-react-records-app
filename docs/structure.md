@@ -1,6 +1,6 @@
 # Structure
 
-src/
+src/  
 ├── components  
 ├── config  
 ├── hooks  
