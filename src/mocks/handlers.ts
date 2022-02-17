@@ -26,4 +26,8 @@ export const handlers = [
   rest.put('/records', (req, res, ctx) => {
     return res(ctx.status(200));
   }),
+
+  rest.delete('/records', (req, res, ctx) => {
+    return res(ctx.status(200));
+  }),
 ];

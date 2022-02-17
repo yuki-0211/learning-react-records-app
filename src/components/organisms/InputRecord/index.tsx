@@ -16,7 +16,7 @@ import { useDatePicker } from '../../../hooks/useDatePicker';
 
 export interface InputRecordProps {
   request: (props: postProps | putProps) => Promise<void>;
-  baseURL: string;
+  URL: string;
   defaultText?: string;
   defaultPagination?: number;
   defaultTextButtonNumber?: { count: string };
@@ -25,7 +25,7 @@ export interface InputRecordProps {
 }
 export const InputRecord: React.VFC<InputRecordProps> = ({
   request,
-  baseURL,
+  URL,
   defaultText,
   defaultPagination,
   defaultTextButtonNumber,
@@ -59,7 +59,7 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
       date: date,
       comment: comment,
     };
-    request({ URL: baseURL, data: recordDate });
+    request({ URL: URL, data: recordDate });
   };
 
   return (

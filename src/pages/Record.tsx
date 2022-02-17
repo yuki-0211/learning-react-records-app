@@ -8,7 +8,7 @@ export const Record: React.VFC = () => {
   return (
     <Box sx={{ display: 'grid', gridAutoColumns: '1fr', height: '800px' }}>
       <Box sx={{ gridRow: '1' }}>
-        <InputRecord request={postRequest} baseURL="/records" />
+        <InputRecord request={postRequest} URL="/records" />
       </Box>
       <Box sx={{ gridRow: '1', gridColumn: 'span 2', overflow: 'auto' }}>
         <CardHistoyProvider>
