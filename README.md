@@ -22,6 +22,14 @@ The directory structure and functional assignment was based on the following rep
 
 ## How to use
 
+Add .env file.
+
+```.env Example
+REACT_APP_URL_TYPE="mock" # mock, local or dev
+REACT_APP_LOCAL_URL="http://localhost:8000/"
+REACT_APP_DEV_URL="http://192.000.0.000:000/api"
+```
+
 At this time, we only support running in a local environment using a mock server.
 
 ```install and local start
