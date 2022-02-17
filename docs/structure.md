@@ -1,17 +1,17 @@
 # Structure
 
 src/
-├── components
-├── config
-├── hooks
-├── init
-├── lib
-├── mocks
-├── pages
-├── providers
-├── reducers
-├── tests
-└── types
+├── components  
+├── config  
+├── hooks  
+├── init  
+├── lib  
+├── mocks  
+├── pages  
+├── providers  
+├── reducers  
+├── tests  
+└── types  
 
 * components: It manages in accordance with atomic design. Due to the small size of the application, the template dir has been removed.
 * config: It manages environment variables and other settings.
