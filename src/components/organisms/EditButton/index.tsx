@@ -8,15 +8,17 @@ import { DialogInputRecord } from '../DialogInputRecord';
 
 interface Props {
   data: typeCardHistory;
+  URL: string;
   children: ReactNode;
 }
 
-export const EditButton: React.VFC<Props> = ({ data, children }) => {
+export const EditButton: React.VFC<Props> = ({ data, URL, children }) => {
   const { state, open, close } = useDialog();
   return (
     <div>
       <Button onClick={open} children={children} />
       <DialogInputRecord
+        URL={URL}
         state={state.isOpen}
         close={close}
         defaultText={data.title}

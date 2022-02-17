@@ -5,6 +5,7 @@ import { Dialog } from '../../atoms/Dialog';
 import { InputRecord } from '../InputRecord';
 
 interface Props {
+  URL: string;
   state: boolean;
   close: () => void;
   defaultText: string;
@@ -15,6 +16,7 @@ interface Props {
 }
 
 export const DialogInputRecord: React.VFC<Props> = ({
+  URL,
   state,
   close,
   defaultText,
@@ -23,13 +25,12 @@ export const DialogInputRecord: React.VFC<Props> = ({
   defaultComment,
   defaultDate,
 }) => {
-  const baseURL = '/records';
   return (
     <Dialog onClose={close} open={state}>
       <Box sx={{ mx: 3 }}>
         <InputRecord
           request={putRequest}
-          baseURL={baseURL}
+          URL={URL}
           defaultText={defaultText}
           defaultPagination={defaultPagination}
           defaultTextButtonNumber={defaultTextButtonNumber}

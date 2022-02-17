@@ -11,6 +11,7 @@ interface getProps {
   config?: AxiosRequestConfig<any>;
   setter: React.Dispatch<React.SetStateAction<any>>;
 }
+
 export interface postProps {
   URL: string;
   data: object;
@@ -20,6 +21,11 @@ export interface postProps {
 export interface putProps {
   URL: string;
   data: object;
+  config?: AxiosRequestConfig<any>;
+}
+
+interface deleteProps {
+  URL: string;
   config?: AxiosRequestConfig<any>;
 }
 
@@ -39,8 +45,7 @@ export const getRequest = async (props: getProps) => {
         console.log('Error', error.message);
       }
       console.log(error.config);
-    })
-    .finally(() => {});
+    });
 };
 
 export const postRequest = async (props: postProps) => {
@@ -59,8 +64,7 @@ export const postRequest = async (props: postProps) => {
         console.log('Error', error.message);
       }
       console.log(error.config);
-    })
-    .finally(() => {});
+    });
 };
 
 export const putRequest = async (props: putProps) => {
@@ -79,6 +83,24 @@ export const putRequest = async (props: putProps) => {
         console.log('Error', error.message);
       }
       console.log(error.config);
+    });
+};
+
+export const deleteRequest = async (props: deleteProps) => {
+  await API.delete(props.URL, props?.config)
+    .then((results) => {
+      console.log(results);
     })
-    .finally(() => {});
+    .catch((error) => {
+      if (error.response) {
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
 };
