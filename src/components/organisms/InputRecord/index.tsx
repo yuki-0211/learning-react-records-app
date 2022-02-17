@@ -1,4 +1,4 @@
-import { postRequest } from '../../../lib/axios';
+import { postProps, postRequest, putProps } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
@@ -15,6 +15,8 @@ import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm'
 import { useDatePicker } from '../../../hooks/useDatePicker';
 
 export interface InputRecordProps {
+  request: (props: postProps | putProps) => Promise<void>;
+  baseURL: string;
   defaultText?: string;
   defaultPagination?: number;
   defaultTextButtonNumber?: { count: string };
@@ -22,6 +24,8 @@ export interface InputRecordProps {
   defaultDate?: Date;
 }
 export const InputRecord: React.VFC<InputRecordProps> = ({
+  request,
+  baseURL,
   defaultText,
   defaultPagination,
   defaultTextButtonNumber,
@@ -55,7 +59,7 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
       date: date,
       comment: comment,
     };
-    postRequest({ URL: '/records', data: recordDate });
+    request({ URL: baseURL, data: recordDate });
   };
 
   return (

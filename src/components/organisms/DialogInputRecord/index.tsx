@@ -1,3 +1,5 @@
+import { putRequest } from '../../../lib/axios';
+import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { Dialog } from '../../atoms/Dialog';
 import { InputRecord } from '../InputRecord';
@@ -21,16 +23,21 @@ export const DialogInputRecord: React.VFC<Props> = ({
   defaultComment,
   defaultDate,
 }) => {
+  const baseURL = '/records';
   return (
     <Dialog onClose={close} open={state}>
-      <InputRecord
-        defaultText={defaultText}
-        defaultPagination={defaultPagination}
-        defaultTextButtonNumber={defaultTextButtonNumber}
-        defaultComment={defaultComment}
-        defaultDate={defaultDate}
-      />
-      <Button onClick={close} children={'Close'} />
+      <Box sx={{ mx: 3 }}>
+        <InputRecord
+          request={putRequest}
+          baseURL={baseURL}
+          defaultText={defaultText}
+          defaultPagination={defaultPagination}
+          defaultTextButtonNumber={defaultTextButtonNumber}
+          defaultComment={defaultComment}
+          defaultDate={defaultDate}
+        />
+        <Button onClick={close} children={'Close'} />
+      </Box>
     </Dialog>
   );
 };

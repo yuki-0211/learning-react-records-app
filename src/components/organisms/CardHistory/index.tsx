@@ -46,9 +46,7 @@ export const CardHistory: React.VFC = () => {
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions sx={{ gridRow: '3', gridColumn: 'span 1' }}>
-            <EditButton URL="test" data={data}>
-              edit
-            </EditButton>
+            <EditButton data={data}>edit</EditButton>
             <Button>delete</Button>
           </CardActions>
         </Card>

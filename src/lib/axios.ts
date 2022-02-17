@@ -11,14 +11,13 @@ interface getProps {
   config?: AxiosRequestConfig<any>;
   setter: React.Dispatch<React.SetStateAction<any>>;
 }
-
-interface postProps {
+export interface postProps {
   URL: string;
   data: object;
   config?: AxiosRequestConfig<any>;
 }
 
-interface putProps {
+export interface putProps {
   URL: string;
   data: object;
   config?: AxiosRequestConfig<any>;
@@ -65,7 +64,7 @@ export const postRequest = async (props: postProps) => {
 };
 
 export const putRequest = async (props: putProps) => {
-  await API.post(props.URL, props.data, props?.config)
+  await API.put(props.URL, props.data, props?.config)
     .then((results) => {
       console.log(results);
     })
