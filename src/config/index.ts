@@ -5,7 +5,7 @@ let customConfig = {};
 
 if (process.env.REACT_APP_URL_TYPE === 'local') {
   customConfig = {
-    baseURL: 'http://localhost:8000/',
+    baseURL: process.env.REACT_APP_LOCAL_URL,
   };
 } else if (process.env.REACT_APP_URL_TYPE === 'dev') {
   customConfig = {
