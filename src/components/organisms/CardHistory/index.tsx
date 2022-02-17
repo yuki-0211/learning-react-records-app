@@ -10,6 +10,7 @@ import { CardContent } from '../../atoms/CardContent';
 import { Rating } from '../../atoms/Rating';
 import { Typography } from '../../atoms/Typograpy';
 import { DialogInputRecord } from '../DialogInputRecord';
+import { EditButton } from '../EditButton';
 
 export const CardHistory: React.VFC = () => {
   const ctx = useContext(cardHistoryContext);
@@ -45,7 +46,9 @@ export const CardHistory: React.VFC = () => {
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions sx={{ gridRow: '3', gridColumn: 'span 1' }}>
-            <Button>edit</Button>
+            <EditButton URL="test" data={data}>
+              edit
+            </EditButton>
             <Button>delete</Button>
           </CardActions>
         </Card>
