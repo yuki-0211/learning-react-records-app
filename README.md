@@ -43,4 +43,3 @@ yarn start
 * [Configuration](docs/configuration.md)
 * [Structure](docs/structure.md)
 * [Components](docs/components.md)
-* [State Management](docs/stateManagement.md)

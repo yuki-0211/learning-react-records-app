@@ -1,5 +1,7 @@
 # Configuration
 
+In progress
+
 ## ESLint
 
 ## Prettier
