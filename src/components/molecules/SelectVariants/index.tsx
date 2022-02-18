@@ -3,13 +3,7 @@ import { SelectChangeEvent } from '@mui/material';
 import { Select } from '../../atoms/Select';
 import { FormControl } from '../../atoms/FormControl';
 import { InputLabel } from '../../atoms/InputLabel';
-/*
-import { MenuItem } from '../../atoms/MenuItem';
-Failure Example
-Select Menu Item does not respond to Wrapped Component
-*/
 import MenuItem from '@mui/material/MenuItem';
-import { Box } from '../../atoms/Box';
 
 interface Props {
   value: string;
@@ -18,12 +12,10 @@ interface Props {
   items: { id: string; value: string }[];
 }
 
-export const SelectVariants: React.VFC<Props> = ({
-  value,
-  onChange,
-  label,
-  items,
-}) => {
+export const SelectVariants: React.VFC<Props> = ({ value, onChange, label, items }) => {
+  /*
+  Create a list box.
+  */
   return (
     <FormControl variant="standard" sx={{ width: '50%' }}>
       <InputLabel id="select-standard-label">{label}</InputLabel>
