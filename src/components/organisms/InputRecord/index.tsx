@@ -32,22 +32,20 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
   defaultComment,
   defaultDate,
 }) => {
+  /*
+  Displays the learning record entry form.
+  */
+
   const { state: title, onChange: titleOnChange } = useTextForm(defaultText);
-  const {
-    state: type,
-    onChange: typeOnChange,
-    select,
-  } = useSelect(initSelectVariants(), '/types');
-  const { state: rank, onChange: rankOnChange } =
-    usePagination(defaultPagination);
+  const { state: type, onChange: typeOnChange, select } = useSelect(initSelectVariants(), '/types');
+  const { state: rank, onChange: rankOnChange } = usePagination(defaultPagination);
   const {
     state: time,
     decrement: timeDecrement,
     increment: timeIncrement,
     onChange: timeOnChange,
   } = useTextButtonNumberForm(defaultTextButtonNumber);
-  const { state: comment, onChange: commentOnChange } =
-    useTextForm(defaultComment);
+  const { state: comment, onChange: commentOnChange } = useTextForm(defaultComment);
   const { state: date, onChange: dateOnChange } = useDatePicker(defaultDate);
 
   const sendOnClick = () => {
@@ -80,12 +78,7 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
         <Typography variant="h6" children={'Select Your Learning Type'} />
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 2' }}>
-        <SelectVariants
-          value={type}
-          onChange={typeOnChange}
-          label={'type'}
-          items={select}
-        />
+        <SelectVariants value={type} onChange={typeOnChange} label={'type'} items={select} />
       </Box>
       <Box sx={{ gridColumn: '1', gridRow: 'span 1' }}>
         <Typography variant="h6" children={'Enter Your Learning Times'} />

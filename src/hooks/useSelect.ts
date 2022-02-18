@@ -4,10 +4,14 @@ import { getRequest } from '../lib/axios';
 import { typeSelectVariants } from '../types/selectVariants';
 
 export const useSelect = (initData: typeSelectVariants[], URL: string) => {
+  /*
+  Holds the data of the list box as a state.
+  It will only be updated initially.
+  */
+
   const [state, setState] = useState<string>('');
   const onChange = useCallback(
-    (event: SelectChangeEvent<string>, child: ReactNode) =>
-      setState(event.target.value),
+    (event: SelectChangeEvent<string>, child: ReactNode) => setState(event.target.value),
     []
   );
   const [select, setSelect] = useState(initData);

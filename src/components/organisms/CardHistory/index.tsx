@@ -10,8 +10,13 @@ import { DeleteButton } from '../DeleteButton';
 import { EditButton } from '../EditButton';
 
 export const CardHistory: React.VFC = () => {
+  /*
+  Display the learning record on cards.
+  */
+
   const ctx = useContext(cardHistoryContext);
   const URL = '/records';
+
   return (
     <Box>
       {ctx.cardData.map((data, index) => (

@@ -13,6 +13,10 @@ interface Props {
   list: page[];
 }
 export const SwipeableTemporaryDrawer: React.VFC<Props> = ({ list }) => {
+  /*
+  Create a sliding menu bar. In this component, it comes out from the left.
+  */
+
   const { state, onChange, url, onClick } = useSwipeableTemporaryDrawer();
 
   let pageName: string = 'Not Found';
@@ -25,18 +29,8 @@ export const SwipeableTemporaryDrawer: React.VFC<Props> = ({ list }) => {
   return (
     <Fragment key="left">
       <AppBarBasic onClick={onChange(true)} pageName={pageName} />
-      <SwipeableDrawer
-        anchor="left"
-        open={state}
-        onClose={onChange(false)}
-        onOpen={onChange(true)}
-      >
-        <MenuList
-          onClick={onChange}
-          onKeyDown={onChange}
-          onClickButton={onClick}
-          list={list}
-        />
+      <SwipeableDrawer anchor="left" open={state} onClose={onChange(false)} onOpen={onChange(true)}>
+        <MenuList onClick={onChange} onKeyDown={onChange} onClickButton={onClick} list={list} />
       </SwipeableDrawer>
     </Fragment>
   );

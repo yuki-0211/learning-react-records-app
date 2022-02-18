@@ -25,6 +25,10 @@ export const DialogInputRecord: React.VFC<Props> = ({
   defaultComment,
   defaultDate,
 }) => {
+  /*
+  Displays the learning record entry form in the dialog.
+  */
+
   return (
     <Dialog onClose={close} open={state}>
       <Box sx={{ mx: 3 }}>

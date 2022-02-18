@@ -13,6 +13,10 @@ interface Props {
 }
 
 export const EditButton: React.VFC<Props> = ({ data, URL, children }) => {
+  /*
+  Receives the id and fires the delete API.
+  */
+
   const { state, open, close } = useDialog();
   return (
     <div>

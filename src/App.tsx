@@ -6,7 +6,11 @@ import { Record } from './pages/Record';
 import { Setting } from './pages/Setting';
 import MenuIcon from '@mui/icons-material/Menu';
 
-function App() {
+const App = () => {
+  /*
+  Routing and page setup.
+  */
+
   const pageName = [
     { name: 'Record', icon: <MenuIcon />, url: '/' },
     { name: 'Hidtory', icon: <MenuIcon />, url: '/history' },
@@ -22,6 +26,6 @@ function App() {
       </Routes>
     </div>
   );
-}
+};
 
 export default App;

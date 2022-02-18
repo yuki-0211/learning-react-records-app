@@ -10,6 +10,10 @@ interface Props {
 }
 
 export const DeleteButton: React.VFC<Props> = ({ data, URL, children }) => {
+  /*
+  Receives the id and fires the delete API.
+  */
+
   const onClick = () => {
     deleteRequest({ URL: URL, config: { params: { id: data.id } } });
   };
