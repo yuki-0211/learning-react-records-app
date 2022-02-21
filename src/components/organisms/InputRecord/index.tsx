@@ -13,10 +13,13 @@ import { initSelectVariants } from '../../../init/selectVariants';
 import { useSelect } from '../../../hooks/useSelect';
 import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
 import { useDatePicker } from '../../../hooks/useDatePicker';
+import { typePutRecord } from '../../../services/putRecord';
+import { typePostRecord } from '../../../services/postRecord';
 
 export interface InputRecordProps {
-  request: (props: postProps | putProps) => Promise<void>;
+  request: (props: typePutRecord | typePostRecord) => Promise<void>;
   URL: string;
+  id?: string;
   defaultText?: string;
   defaultPagination?: number;
   defaultTextButtonNumber?: { count: string };
@@ -26,6 +29,7 @@ export interface InputRecordProps {
 export const InputRecord: React.VFC<InputRecordProps> = ({
   request,
   URL,
+  id,
   defaultText,
   defaultPagination,
   defaultTextButtonNumber,
@@ -37,7 +41,7 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
   */
 
   const { state: title, onChange: titleOnChange } = useTextForm(defaultText);
-  const { state: type, onChange: typeOnChange, select } = useSelect(initSelectVariants(), '/types');
+  const { state: type, onChange: typeOnChange, select } = useSelect(initSelectVariants());
   const { state: rank, onChange: rankOnChange } = usePagination(defaultPagination);
   const {
     state: time,
@@ -49,7 +53,28 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
   const { state: date, onChange: dateOnChange } = useDatePicker(defaultDate);
 
   const sendOnClick = () => {
+    if (id === undefined) {
+      const recordDate = {
+        title: title,
+        type: type,
+        rank: rank,
+        time: time.count,
+        date: date,
+        comment: comment,
+      };
+    } else {
+      const recordDate = {
+        id: id,
+        title: title,
+        type: type,
+        rank: rank,
+        time: time.count,
+        date: date,
+        comment: comment,
+      };
+    }
     const recordDate = {
+      id: id,
       title: title,
       type: type,
       rank: rank,
@@ -57,7 +82,7 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
       date: date,
       comment: comment,
     };
-    request({ URL: URL, data: recordDate });
+    request(recordDate);
   };
 
   return (

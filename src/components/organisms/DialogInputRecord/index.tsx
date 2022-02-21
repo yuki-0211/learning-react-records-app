@@ -1,4 +1,5 @@
 import { putRequest } from '../../../lib/axios';
+import { putRecord } from '../../../services/putRecord';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { Dialog } from '../../atoms/Dialog';
@@ -6,6 +7,7 @@ import { InputRecord } from '../InputRecord';
 
 interface Props {
   URL: string;
+  id: string;
   state: boolean;
   close: () => void;
   defaultText: string;
@@ -17,6 +19,7 @@ interface Props {
 
 export const DialogInputRecord: React.VFC<Props> = ({
   URL,
+  id,
   state,
   close,
   defaultText,
@@ -33,7 +36,8 @@ export const DialogInputRecord: React.VFC<Props> = ({
     <Dialog onClose={close} open={state}>
       <Box sx={{ mx: 3 }}>
         <InputRecord
-          request={putRequest}
+          request={putRecord}
+          id={id}
           URL={URL}
           defaultText={defaultText}
           defaultPagination={defaultPagination}

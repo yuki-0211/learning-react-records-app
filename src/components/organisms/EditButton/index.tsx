@@ -23,6 +23,7 @@ export const EditButton: React.VFC<Props> = ({ data, URL, children }) => {
       <Button onClick={open} children={children} />
       <DialogInputRecord
         URL={URL}
+        id={data.id}
         state={state.isOpen}
         close={close}
         defaultText={data.title}
