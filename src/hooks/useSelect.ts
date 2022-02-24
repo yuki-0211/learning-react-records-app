@@ -1,14 +1,15 @@
 import { SelectChangeEvent } from '@mui/material';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
-import { getRequest } from '../lib/axios';
+import { TypeAPI } from '../services/Type';
 import { typeSelectVariants } from '../types/selectVariants';
 
-export const useSelect = (initData: typeSelectVariants[], URL: string) => {
+export const useSelect = (initData: typeSelectVariants[]) => {
   /*
   Holds the data of the list box as a state.
   It will only be updated initially.
   */
 
+  const api = new TypeAPI();
   const [state, setState] = useState<string>('');
   const onChange = useCallback(
     (event: SelectChangeEvent<string>, child: ReactNode) => setState(event.target.value),
@@ -16,7 +17,7 @@ export const useSelect = (initData: typeSelectVariants[], URL: string) => {
   );
   const [select, setSelect] = useState(initData);
   useEffect(() => {
-    getRequest({ URL: URL, setter: setSelect });
+    api.getAllRecord(setSelect);
   }, []);
   return { state, onChange, select };
 };
