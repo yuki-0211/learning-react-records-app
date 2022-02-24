@@ -19,6 +19,9 @@ export const TextButtonNumberForm: React.VFC<Props> = ({
   label,
   helper,
 }) => {
+  /*
+  Create a numeric input form that can be increased or decreased with a button.
+  */
   return (
     <div>
       <TextField

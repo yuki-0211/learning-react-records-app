@@ -11,6 +11,11 @@ interface Props {
 }
 
 export const AppBarBasic: React.VFC<Props> = ({ pageName, onClick }) => {
+  /*
+  Create a Bar that is always displayed at the top of the page.
+  This component belongs to the menu bar domain, so it can be an organisms.
+  */
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ boxShadow: 0 }}>

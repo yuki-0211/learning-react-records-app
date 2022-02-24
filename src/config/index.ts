@@ -1,3 +1,7 @@
+/*
+Set environment variables.
+*/
+
 const defaultConfig = {
   baseURL: '',
 };

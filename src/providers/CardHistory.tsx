@@ -10,7 +10,7 @@ interface typeContext {
 export const cardHistoryContext = createContext({} as typeContext);
 
 export const CardHistoyProvider = (props: React.PropsWithChildren<{}>) => {
-  const { state: cardData } = useCardHistory(initCardHistory(), '/records');
+  const { state: cardData } = useCardHistory(initCardHistory());
 
   return <cardHistoryContext.Provider value={{ cardData }} {...props} />;
 };

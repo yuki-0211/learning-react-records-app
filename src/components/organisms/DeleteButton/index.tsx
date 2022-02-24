@@ -1,17 +1,21 @@
-import { ReactNode, useEffect, useState } from 'react';
-import { deleteRequest } from '../../../lib/axios';
+import { ReactNode } from 'react';
+import { RecordAPI } from '../../../services/Record';
 import { typeCardHistory } from '../../../types/cardHistory';
 import { Button } from '../../atoms/Button';
 
 interface Props {
   data: typeCardHistory;
-  URL: string;
   children: ReactNode;
 }
 
-export const DeleteButton: React.VFC<Props> = ({ data, URL, children }) => {
+export const DeleteButton: React.VFC<Props> = ({ data, children }) => {
+  /*
+  Receives the id and fires the delete API.
+  */
+
   const onClick = () => {
-    deleteRequest({ URL: URL, config: { params: { id: data.id } } });
+    const api = new RecordAPI();
+    api.deleteRecord(data.id);
   };
   return (
     <div>

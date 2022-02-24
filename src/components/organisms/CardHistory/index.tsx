@@ -10,8 +10,12 @@ import { DeleteButton } from '../DeleteButton';
 import { EditButton } from '../EditButton';
 
 export const CardHistory: React.VFC = () => {
+  /*
+  Display the learning record on cards.
+  */
+
   const ctx = useContext(cardHistoryContext);
-  const URL = '/records';
+
   return (
     <Box>
       {ctx.cardData.map((data, index) => (
@@ -44,12 +48,8 @@ export const CardHistory: React.VFC = () => {
             <Typography>{data.comment}</Typography>
           </CardContent>
           <CardActions sx={{ gridRow: '3', gridColumn: 'span 1' }}>
-            <EditButton data={data} URL={URL}>
-              edit
-            </EditButton>
-            <DeleteButton data={data} URL={URL}>
-              delete
-            </DeleteButton>
+            <EditButton data={data}>edit</EditButton>
+            <DeleteButton data={data}>delete</DeleteButton>
           </CardActions>
         </Card>
       ))}
