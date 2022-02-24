@@ -1,4 +1,3 @@
-import { postProps, postRequest, putProps } from '../../../lib/axios';
 import { Box } from '../../atoms/Box';
 import { Button } from '../../atoms/Button';
 import { DatePicker } from '../../atoms/DatePicker';
@@ -13,12 +12,9 @@ import { initSelectVariants } from '../../../init/selectVariants';
 import { useSelect } from '../../../hooks/useSelect';
 import { useTextButtonNumberForm } from '../../../hooks/useTextButtonNumberForm';
 import { useDatePicker } from '../../../hooks/useDatePicker';
-import { typePutRecord } from '../../../services/putRecord';
-import { typePostRecord } from '../../../services/postRecord';
+import { RecordAPI } from '../../../services/Record';
 
 export interface InputRecordProps {
-  request: (props: typePutRecord | typePostRecord) => Promise<void>;
-  URL: string;
   id?: string;
   defaultText?: string;
   defaultPagination?: number;
@@ -27,8 +23,6 @@ export interface InputRecordProps {
   defaultDate?: Date;
 }
 export const InputRecord: React.VFC<InputRecordProps> = ({
-  request,
-  URL,
   id,
   defaultText,
   defaultPagination,
@@ -37,7 +31,7 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
   defaultDate,
 }) => {
   /*
-  Displays the learning record entry form.
+  Displays the learning record input form.
   */
 
   const { state: title, onChange: titleOnChange } = useTextForm(defaultText);
@@ -53,28 +47,8 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
   const { state: date, onChange: dateOnChange } = useDatePicker(defaultDate);
 
   const sendOnClick = () => {
-    if (id === undefined) {
-      const recordDate = {
-        title: title,
-        type: type,
-        rank: rank,
-        time: time.count,
-        date: date,
-        comment: comment,
-      };
-    } else {
-      const recordDate = {
-        id: id,
-        title: title,
-        type: type,
-        rank: rank,
-        time: time.count,
-        date: date,
-        comment: comment,
-      };
-    }
+    const api = new RecordAPI();
     const recordDate = {
-      id: id,
       title: title,
       type: type,
       rank: rank,
@@ -82,7 +56,11 @@ export const InputRecord: React.VFC<InputRecordProps> = ({
       date: date,
       comment: comment,
     };
-    request(recordDate);
+    if (id === undefined) {
+      api.saveRecord(recordDate);
+    } else {
+      api.editRecord(id, recordDate);
+    }
   };
 
   return (

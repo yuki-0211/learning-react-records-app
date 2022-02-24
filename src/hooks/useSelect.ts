@@ -1,7 +1,6 @@
 import { SelectChangeEvent } from '@mui/material';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
-import { getRequest } from '../lib/axios';
-import { getTypeList } from '../services/getTypeList';
+import { TypeAPI } from '../services/Type';
 import { typeSelectVariants } from '../types/selectVariants';
 
 export const useSelect = (initData: typeSelectVariants[]) => {
@@ -10,6 +9,7 @@ export const useSelect = (initData: typeSelectVariants[]) => {
   It will only be updated initially.
   */
 
+  const api = new TypeAPI();
   const [state, setState] = useState<string>('');
   const onChange = useCallback(
     (event: SelectChangeEvent<string>, child: ReactNode) => setState(event.target.value),
@@ -17,7 +17,7 @@ export const useSelect = (initData: typeSelectVariants[]) => {
   );
   const [select, setSelect] = useState(initData);
   useEffect(() => {
-    getTypeList(setSelect);
+    api.getAllRecord(setSelect);
   }, []);
   return { state, onChange, select };
 };
